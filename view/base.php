@@ -1,63 +1,3 @@
-<?php 
-
-session_start();
-
-require_once('src/option.php');
-
-require_once('./src/connection.php');
-
-if(!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passwordTwo'])) {
-
-    // Connexion à la base de données.
-    require_once('./src/connection.php');
-
-    // Variables.
-    $email       = htmlspecialchars($_POST['email']);
-    $password    = htmlspecialchars($_POST['password']);
-    $passwordTwo = htmlspecialchars($_POST['passwordTwo']);
-
-    // Les mots de passe sont-ils identiques ?
-    if($password != $passwordTwo) {
-        header('location: dashboard.php?error=1&message=Les mots de passe ne sont pas identiques.');
-        exit();
-    }
-
-    // L'adresse email est-elle correcte ?
-    if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header('location: dashboard.php?error=1&L\'adresse email est invalide.');
-        exit();
-    }
-
-    // L'adresse email est-elle en doublon ?
-    $req = $bdd->prepare('SELECT COUNT(*) as numberEmail FROM user WHERE email = ?');
-    $req->execute([$email]);
-
-    while($emailVerification = $req->fetch()) {
-        if($emailVerification['numberEmail'] != 0) {
-            header('location: dashboard.php?error=1&message=Connexion impossible.');
-            exit();
-        }
-    }
-
-    // Chiffrement du mot de passe.
-    $password = "bx1".sha1($password ."456")."123";
-
-    // Secret.
-    $secret = sha1($email).time();
-    $secret = sha1($secret).time();
-
-    // Ajouter un utilisateur.
-    $req = $bdd->prepare('INSERT INTO user(email, password, secret) VALUES(?, ?, ?)');
-    $req->execute([$email, $password, $secret]);
-
-    header('location: dashboard.php?success=1');
-    exit();
-
- }
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -66,7 +6,7 @@ if(!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passw
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Garage Parrot 15 ans d'expérience à votre service.">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <title>Garage Parrot</title>
+    <title><?= $title ?> | Garage Parrot</title>
 </head>
 <body> 
        
@@ -98,63 +38,64 @@ if(!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passw
                 <li class="nav-item">
                     <a href="#contact" class="nav-link">Contact</a>
                     </li>
+                    <?php if(isset($_SESSION['connect'])) { ?>
                 <li class="nav-item">
-                    <a href="#contact" class="nav-link">Tableau de Bord</a>
+                    <a href="index.php" class="nav-link">Tableau de Bord</a>
                     </li>
+                    <?php } ?>
+                    <?php if(!isset($_SESSION['connect'])) { ?>
                 <li class="nav-item">
                     <a href="#contact" class="nav-link" data-bs-toggle="modal" data-bs-target="#signIn">Espace collaborateurs</a>
                     </li>
+                    <?php } ?>
                 </ul>
         </div>
-    </div>
 </nav>
     </header>
+
+    <!-- Contenu -->
+
+    <?= $content ?>
+
+
     
-    <div class="container">
 
- <?php 
- if($_SESSION['id'] == 0) { ?>
+    <!-- MODALE DE CONNECTION -->
 
-<h2>Nouveau collaborateur</h2>
+    <div class="modal fade" id="signIn" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content p-3 mt-0">
 
-<form method="POST" action="dashboard.php">
-
-<?php if(isset($_GET['success'])) {
-echo '<p class="mt-4 fw-bold text-success">Inscription réalisée avec succès !</p>';
-}
-else if(isset($_GET['error']) && !empty($_GET['message'])) {
-echo '<p class="mt-4 fw-bold text-danger">'.htmlspecialchars($_GET['message']).'</p>';
-} ?>
-
-<p class="form-floating m-2">
-<input type="email" name="email" class="form-control" id="email" placeholder="dupont@email.com">
-<label for="email">Email</label>
-</p>
-<p class="form-floating m-2">
-<input type="password" name="password" class="form-control" id="password" placeholder="Mot de passe">
-<label for="password">Mot de passe</label>
-</p>
-<p class="form-floating m-2">
-<input type="password" name="passwordTwo" class="form-control" id="passwordTwo" placeholder="Confirmez votre mot de passe">
-<label for="passwordTwo">Confirmez votre mot de passe</label>
-</p>
-<button class="w-100 btn btn-lg btn-primary mt-4" type="submit">Enregister</button>
-</form>
-<div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5"></div>
-<div class="overflow-hidden" style="max-height: 30vh;"></div>
-
-</div>
-    
- <?php }; ?>
- 
-
-
-            <button type="button" href="" class="btn btn-primary me-2">
-                    <a class="text-decoration-none text-white" href="./src/logout.php">Déconnexion</a>
+                <!-- Titre de la modale -->
+                <div class="modal-header">
+                    <h5 class="modal-title">Connectez-vous</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal">
                     </button>
+                </div>
 
+                <!-- Corps de la modale -->
+                <form method="POST" action="index.php">
 
-<!-- FOOTER -->
+                    <p class="form-floating m-2">
+                        <input type="email" name="email" class="form-control" id="email" placeholder="dupont@email.com">
+                        <label for="email">Email</label>
+                    </p>
+                    <p class="form-floating m-2">
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Mot de passe">
+                        <label for="password">Mot de passe</label>
+                    </p>
+
+                    <p class="checkbox my-4">
+                        <label>
+                            <input type="checkbox" name="auto" value="remember-me"> Se souvenir de moi
+                        </label>
+                    </p>
+                    <button class="w-100 btn btn-lg btn-primary" type="submit">Connexion</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Pied-de-page. -->
     
