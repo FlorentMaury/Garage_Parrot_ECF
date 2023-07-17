@@ -34,12 +34,19 @@ if(!empty($_POST['email']) && !empty($_POST['password'])) {
     while($user = $req->fetch()) {
         if($password == $user['password']) {
             $_SESSION['connect'] = 1;
-            $_SESSION['name']    = $user['name'];
+            $_SESSION['email']   = $user['email'];
             $_SESSION['id']      = $user['id'];
 
             // Connexion auto par cookie.
             if(isset($_POST['auto'])) {
-                setcookie('auth', $user['secret'], time() + 365*24*3600, '/', null, false, true);
+                setcookie('auth', $user['secret'], [
+                    'expires' => time() + 365*24*3600, 
+                    'path' => '/', 
+                    'domain' => null, 
+                    'secure' => false, 
+                    'httponly' => true, 
+                    'SameSite' => 'Strict',
+                ]);
             } 
 
             header('location: index.php?success=1');

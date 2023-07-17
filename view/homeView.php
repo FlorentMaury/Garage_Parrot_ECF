@@ -4,6 +4,8 @@
 
     ob_start();
 
+    var_dump($_SESSION);
+
 ?>
 
 
@@ -114,6 +116,43 @@
 </div>
 
 <!-- FORMULAIRE DE CONTACT -->
+
+
+<!-- MODALE DE CONNECTION -->
+
+<div class="modal fade" id="signIn" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-3 mt-0">
+
+            <!-- Titre de la modale -->
+            <div class="modal-header">
+                <h5 class="modal-title">Connectez-vous</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal">
+                </button>
+            </div>
+
+            <!-- Corps de la modale -->
+            <form method="POST" action="index.php">
+
+                <p class="form-floating m-2">
+                    <input type="email" name="email" class="form-control" id="email" placeholder="dupont@email.com">
+                    <label for="email">Email</label>
+                </p>
+                <p class="form-floating m-2">
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Mot de passe">
+                    <label for="password">Mot de passe</label>
+                </p>
+
+                <p class="checkbox my-4">
+                    <label>
+                        <input type="checkbox" name="auto" value="remember-me"> Se souvenir de moi
+                    </label>
+                </p>
+                <button class="w-100 btn btn-lg btn-primary" type="submit">Connexion</button>
+            </form>
+        </div>
+    </div>
+</div>
 
 <?php 
 

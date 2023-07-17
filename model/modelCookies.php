@@ -4,7 +4,7 @@
 
     if(isset($_COOKIE['auth']) && !isset($_SESSION['connect'])) {
         // Connexion à la bdd
-        require_once('connection.php');
+        require_once('modelConnectionDB.php');
 
         // Variables
         $secret = htmlspecialchars($_COOKIE['auth']);
@@ -22,6 +22,7 @@
                 while($userInformations = $informations->fetch()) {
                     $_SESSION['connect'] = 1;
                     $_SESSION['email']   = $userInformations['email'];
+                    $_SESSION['id']      = $userInformations['id'];
                 }
             }
         }

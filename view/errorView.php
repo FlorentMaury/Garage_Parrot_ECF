@@ -1,5 +1,5 @@
-<?= 
-    $title = 'Accueil';
+<?php 
+    $title = 'Une erreur s\'est produite';
 
     ob_start();
 ?>
@@ -7,7 +7,7 @@
     <h1>Oups...</h1>
     <p><?= $error ?></p>
     </div>
-<?=
+<?php
 
     $content = ob_get_clean();
 

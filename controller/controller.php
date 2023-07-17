@@ -5,10 +5,14 @@ function home() {
 };
 
 function dashboard() {
-    require('model/modelLogout.php');
     require('model/modelNewUser.php');
 
     require('view/dashboardView.php');
+    
+};
+
+function logOut() {
+    require('model/modelLogout.php');
 };
 
 ?>

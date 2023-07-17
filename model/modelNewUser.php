@@ -3,7 +3,7 @@
 if(!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passwordTwo'])) {
 
     // Connexion à la base de données.
-    require_once('./src/modelConnection.php');
+    require_once('./model/modelConnectionDB.php');
 
     // Variables.
     $email       = htmlspecialchars($_POST['email']);
