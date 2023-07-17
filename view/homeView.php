@@ -4,8 +4,6 @@
 
     ob_start();
 
-    var_dump($_SESSION);
-
 ?>
 
 
@@ -59,53 +57,29 @@
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th scope="col"></th>
-                <th scope="col" colspan="2">Prestations</th>
+                <th scope="col">Prestations</th>
                 <th scope="col">Prix</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <th scope="row">Basique</th>
-                <td colspan="2">
-                    <p>Vidange huile moteur</p>
-                    <p>Changement des filtres</p>
-                </td>
+                <td scope="row">Basique</td>
                 <td>299 €</td>
             </tr>
             <tr>
-                <th scope="row">Confort</th>
-                <td colspan="2">
-                <p>Vidange huile moteur</p>
-                    <p>Changement des filtres</p>
-                    <p>Changement liquides de refroidissement</p>
-                    <p>Changement du liquide de frein</p>
-                </td>
+                <td scope="row">Confort</td>
                 <td>499 €</td>
             </tr>
             <tr>
-                <th scope="row">Premium</th>
-                <td colspan="2">
-                <p>Vidange huile moteur</p>
-                    <p>Changement des filtres</p>
-                    <p>Changement liquides de refroidissement</p>
-                    <p>Changement du liquide de frein</p>
-                    <p>Vidange boîte de vitesse</p>
-                </td>
+                <td scope="row">Premium</td>
                 <td>899 €</td>
             </tr>
             <tr>
-                <th scope="row">Climatisation</th>
-                <td colspan="2">
-                <p>Recharge climatisation</p>
-                </td>
+                <td scope="row">Climatisation</td>
                 <td>59 €</td>
             </tr>
             <tr>
-                <th scope="row">Pneumatiques</th>
-                <td colspan="2">
-                <p>Changement pneus (par deux)</p>
-                </td>
+                <td scope="row">Pneumatiques</td>
                 <td>48 €*</td>
             </tr>
         </tbody>
@@ -132,7 +106,7 @@
             </div>
 
             <!-- Corps de la modale -->
-            <form method="POST" action="index.php">
+            <form method="POST" action="index.php?page=home">
 
                 <p class="form-floating m-2">
                     <input type="email" name="email" class="form-control" id="email" placeholder="dupont@email.com">

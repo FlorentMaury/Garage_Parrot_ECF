@@ -45,7 +45,7 @@
                     <?php } ?>
                     <?php if(!isset($_SESSION['connect'])) { ?>
                 <li class="nav-item">
-                    <a href="#contact" class="nav-link" data-bs-toggle="modal" data-bs-target="#signIn">Espace collaborateurs</a>
+                    <a href="#connect" class="nav-link" data-bs-toggle="modal" data-bs-target="#signIn">Espace collaborateurs</a>
                     </li>
                     <?php } ?>
                 </ul>

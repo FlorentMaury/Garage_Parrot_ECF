@@ -3,7 +3,8 @@
 if(!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passwordTwo'])) {
 
     // Connexion à la base de données.
-    require_once('./model/modelConnectionDB.php');
+    $bdd = new PDO('mysql:host=localhost;dbname=garage_parrot;charset=utf8', 'root', '');
+
 
     // Variables.
     $email       = htmlspecialchars($_POST['email']);
@@ -12,13 +13,13 @@ if(!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passw
 
     // Les mots de passe sont-ils identiques ?
     if($password != $passwordTwo) {
-        header('location: dashboard.php?error=1&message=Les mots de passe ne sont pas identiques.');
+        header('location: index.php?error=1&message=Les mots de passe ne sont pas identiques.');
         exit();
     }
 
     // L'adresse email est-elle correcte ?
     if(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        header('location: dashboard.php?error=1&L\'adresse email est invalide.');
+        header('location: index.php?error=1&L\'adresse email est invalide.');
         exit();
     }
 
@@ -28,7 +29,7 @@ if(!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passw
 
     while($emailVerification = $req->fetch()) {
         if($emailVerification['numberEmail'] != 0) {
-            header('location: dashboard.php?error=1&message=Connexion impossible.');
+            header('location: index.php?error=1&message=Cette adresse e-mail est déjà utilisée.');
             exit();
         }
     }
@@ -44,7 +45,7 @@ if(!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passw
     $req = $bdd->prepare('INSERT INTO user(email, password, secret) VALUES(?, ?, ?)');
     $req->execute([$email, $password, $secret]);
 
-    header('location: dashboard.php?success=1');
+    header('location: index.php?page=dashboard&success=1');
     exit();
 
  }

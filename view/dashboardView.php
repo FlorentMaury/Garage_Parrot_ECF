@@ -4,8 +4,6 @@
   
     ob_start();
 
-    var_dump($_SESSION['id']);
-
 ?>
 
 <div class="container">
@@ -16,7 +14,7 @@ if($_SESSION['id'] == 0) {
 
 <h2>Nouveau collaborateur</h2>
 
-<form method="POST" action="dashboardView.php">
+<form method="POST" action="index.php?page=dashboard">
 
 <?php if(isset($_GET['success'])) {
 echo '<p class="mt-4 fw-bold text-success">Inscription réalisée avec succès !</p>';
@@ -36,7 +34,7 @@ echo '<p class="mt-4 fw-bold text-danger">'.htmlspecialchars($_GET['message']).'
 </p>
 <p class="form-floating m-2">
 <input type="password" name="passwordTwo" class="form-control" id="passwordTwo" placeholder="Confirmez votre mot de passe">
-<label for="passwordTwo">Confirmez votre mot de passe</label>
+<label for="passwordTwo">Confirmez le mot de passe</label>
 </p>
 <button class="w-50 btn btn-lg btn-primary mt-4" type="submit">Enregister</button>
 </form>
@@ -44,6 +42,17 @@ echo '<p class="mt-4 fw-bold text-danger">'.htmlspecialchars($_GET['message']).'
 <div class="overflow-hidden" style="max-height: 30vh;"></div>
 
 <h2>Liste des employés : </h2>
+<h2>Liste des services : </h2>
+<h2>Horaires du garage : </h2>
+
+<?php } ?>
+
+<?php 
+if($_SESSION['id'] > 0) { 
+?>
+
+<h2>Véhicules en ligne : </h2>
+<h2>Mettre un véhicule en ligne : </h2>
 
 <?php } ?>
 
