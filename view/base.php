@@ -61,8 +61,50 @@
     
     <div class="container">
 
+
         <hr class="text-primary">
         <footer class="d-flex flex-wrap m-5 justify-content-between align-items-center">
+
+        <div>
+
+
+<h3>Nos horaires</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Jour</th>
+            <th colspan="2">Matin</th>
+            <th colspan="2">Après-midi</th>
+        </tr>
+    </thead>
+
+    
+    <tbody>
+        <tr>
+
+        <?php
+require('./model/modelConnectionDB.php');
+
+while($time = $schedule->fetch()) {
+
+?>
+            <td><p><?= $time['day'] ?></p></td>
+            <td><p><?= $time['opening'] ?>h - </p></td>
+            <td><p><?= $time['break_start'] ?>h</p></td>
+            <td><p><?= $time['break_end'] ?>h - </p></td>
+            <td><p><?= $time['closing'] ?>h</p></td>
+
+
+    </tbody>
+    <?php
+}
+?>
+        </tr>
+</table>
+
+
+</div>
+
             <div class="col-md-4 d-flex align-items-center">
                 <span class="text-muted">© 2022 Florent Maury</span>
             </div>

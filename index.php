@@ -3,7 +3,7 @@
     // Traitement.
     session_start();
 
-    require_once('./model/modelConnectionDB.php');
+    require('./model/modelConnectionDB.php');
     require('./model/modelConnectionUser.php');
 
     // Routeur.

@@ -42,6 +42,19 @@ echo '<p class="mt-4 fw-bold text-danger">'.htmlspecialchars($_GET['message']).'
 <div class="overflow-hidden" style="max-height: 30vh;"></div>
 
 <h2>Liste des employés : </h2>
+
+<?php
+
+require('./model/modelConnectionDB.php');
+
+while($utilisateur = $requete->fetch()) {
+
+?>
+<p><?= $utilisateur['email'] ?></p>
+<?php
+}
+?>
+
 <h2>Liste des services : </h2>
 <h2>Horaires du garage : </h2>
 

@@ -52,6 +52,8 @@
 
 <!-- LES SERVICES -->
 
+
+
 <div class="container my-4">
     <h2>Nos services</h2>
     <table class="table table-bordered">
@@ -62,26 +64,20 @@
             </tr>
         </thead>
         <tbody>
+            <?php
+
+require('./model/modelConnectionDB.php');
+
+while($services = $service->fetch()) {
+
+?>
             <tr>
-                <td scope="row">Basique</td>
-                <td>299 €</td>
+                <td scope="row"><?= $services['service'] ?></td>
+                <td><?= $services['price'] ?> €</td>
             </tr>
-            <tr>
-                <td scope="row">Confort</td>
-                <td>499 €</td>
-            </tr>
-            <tr>
-                <td scope="row">Premium</td>
-                <td>899 €</td>
-            </tr>
-            <tr>
-                <td scope="row">Climatisation</td>
-                <td>59 €</td>
-            </tr>
-            <tr>
-                <td scope="row">Pneumatiques</td>
-                <td>48 €*</td>
-            </tr>
+<?php
+}
+?>
         </tbody>
 
     </table>
