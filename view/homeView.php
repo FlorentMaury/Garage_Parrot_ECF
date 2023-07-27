@@ -65,22 +65,20 @@
         </thead>
         <tbody>
             <?php
+            require('./model/modelConnectionDB.php');
 
-require('./model/modelConnectionDB.php');
-
-while($services = $service->fetch()) {
-
-?>
-            <tr>
-                <td scope="row"><?= $services['service'] ?></td>
-                <td><?= $services['price'] ?> €</td>
-            </tr>
-<?php
-}
-?>
+            while($services = $service->fetch()) {
+                ?>
+                    <tr>
+                        <td scope="row"><?= $services['service'] ?></td>
+                        <td><?= $services['price'] ?> €</td>
+                    </tr>
+                <?php
+                }
+            ?>
         </tbody>
-
     </table>
+</div>
 
 <p class="text-muted">* Prix du pneu non-inclus.</p>
 </div>

@@ -3,10 +3,15 @@
 
     ob_start();
 ?>
+
     <div class="container">
-    <h1>Oups...</h1>
-    <p><?= $error ?></p>
+
+        <h1>Oups...</h1>
+
+        <p><?= $error ?></p>
+
     </div>
+    
 <?php
 
     $content = ob_get_clean();
