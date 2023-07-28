@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Garage Parrot 15 ans d'expérience à votre service.">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="./design/defaut.css">
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <title><?= $title ?> | Garage Parrot</title>
 </head>
 <body> 
@@ -19,12 +21,12 @@
         <div class="navbar-brand">
             GARAGE PARROT
         </div>
-        <!-- Le bouton s'affichera en petit écran -->
-        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#monMenuDeroulant">
+        <!-- Le bouton s'affichera sur les petits écrans -->
+        <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#smallNav">
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="monMenuDeroulant">
+        <div class="collapse navbar-collapse" id="smallNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a href="index.php?page=home" class="nav-link">Accueil</a>
@@ -52,6 +54,15 @@
         </div>
 </nav>
     </header>
+
+    <?php
+        if(isset($_GET['connexion'])) {
+            echo '<div class=\'container\'><p class="mt-4 fw-bold text-success">Connexion réalisée avec succès.</p></div>';
+        }
+        else if(isset($_GET['error']) && !empty($_GET['message'])) {
+            echo '<div class=\'container\'><p class="mt-4 fw-bold text-error">'.htmlspecialchars($_GET['message']).'</p></div>';
+        } 
+    ?>
 
     <!-- Contenu -->
 
@@ -83,22 +94,20 @@
         <tr>
 
         <?php
-require('./model/modelConnectionDB.php');
+    require('./model/modelConnectionDB.php');
 
-while($time = $schedule->fetch()) {
+    while($time = $schedule->fetch()) {
 
-?>
+        ?>
             <td><p><?= $time['day'] ?></p></td>
             <td><p><?= $time['opening'] ?>h - </p></td>
             <td><p><?= $time['break_start'] ?>h</p></td>
             <td><p><?= $time['break_end'] ?>h - </p></td>
             <td><p><?= $time['closing'] ?>h</p></td>
-
-
-    </tbody>
-    <?php
-}
-?>
+        </tbody>
+        <?php
+    }
+    ?>
         </tr>
 </table>
 
@@ -112,8 +121,9 @@ while($time = $schedule->fetch()) {
 
     <!-- Script JavaScript pour animations (ex : modales) Bootstrap. -->
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 </body>
 </html>

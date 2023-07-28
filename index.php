@@ -7,7 +7,6 @@
     require('./model/modelConnectionUser.php');
 
     // Routeur.
-
     require('./controller/controller.php');
 
     try{

@@ -49,7 +49,7 @@ if(!empty($_POST['email']) && !empty($_POST['password']) && empty($_SESSION)) {
                 ]);
             } 
 
-            header('location: index.php?success=1');
+            header('location: index.php?connexion=1');
             exit();
         } else {
             header('location: index.php?error=1&message=Impossible de vous authentifier correctement.');
@@ -57,12 +57,5 @@ if(!empty($_POST['email']) && !empty($_POST['password']) && empty($_SESSION)) {
         }
     }
 }
-
-if(isset($_GET['success'])) {
-    echo '<div class=\'container\'><p class="mt-4 fw-bold text-success">Connexion réalisée avec succès.</p></div>';
-}
-else if(isset($_GET['error']) && !empty($_GET['message'])) {
-    echo '<div class=\'container\'><p class="mt-4 fw-bold text-error">'.htmlspecialchars($_GET['message']).'</p></div>';
-} 
     
 ?>
