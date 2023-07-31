@@ -11,13 +11,18 @@ if(
 
 
     // Variables.
-    $service  = htmlspecialchars($_POST['service']);
+    $serviceId  = htmlspecialchars($_POST['service']);
     $included = htmlspecialchars($_POST['included']);
     $price    = htmlspecialchars($_POST['price']);
 
-    // Ajouter un véhicule.
-    $req = $bdd->prepare('UPDATE service(service, included, price) SET(?, ?, ?)');
-    $req->execute([$service, $included, $price]);
+    // Modifier un service.
+    $q = $bdd->prepare("SELECT service_name FROM `service` WHERE id = ?");
+    $q->execute([$serviceId]);
+    $serviceName = $q->fetchColumn();
+
+    // Modifier un service.
+    $req = $bdd->prepare('UPDATE service SET service_name = ?, included = ?, price = ? WHERE id = ?');
+    $req->execute([$serviceName, $included, $price, $serviceId]);
 
     
 

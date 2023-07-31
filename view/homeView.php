@@ -96,7 +96,7 @@
             while($services = $service->fetch()) {
                 ?>
                     <tr>
-                        <td scope="row"><?= $services['service'] ?></td>
+                        <td scope="row"><?= $services['service_name'] ?></td>
                         <td scope="row"><?= $services['included']; 
                             if($services['id'] == 4) {
                                 echo' (*)';

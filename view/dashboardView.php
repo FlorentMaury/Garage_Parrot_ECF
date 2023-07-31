@@ -65,13 +65,14 @@
         <form method="POST" action="index.php?page=dashboard">
 
         <div class="input-group mb-3">
-            <label class="input-group-text" for="inputGroupSelect01">Options</label>
-            <select class="form-select" id="inputGroupSelect01">
+            <label  class="input-group-text" for="inputGroupSelect01">Options</label>
+            <select name="service" class="form-select" id="inputGroupSelect01">
                 <option selected>Type de prestation</option>
                 <?php
                     while($services = $service->fetch()) {
                     ?>
-                        <option name="service" value="<?= $services['id']?>" ><?= $services['service']?> </option>
+                        <option value="<?= $services['id']?>" ><?= $services['service_name']?></option>
+
                     <?php }  ?>
             </select>
         </div>
@@ -87,6 +88,7 @@
             </p>
             
             <button class="w-50 btn btn-lg btn-primary mt-4" type="submit">Enregister</button>
+
         </form>
 
     <?php } ?>
