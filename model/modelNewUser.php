@@ -3,8 +3,7 @@
 if(!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passwordTwo'])) {
 
     // Connexion à la base de données.
-    $bdd = new PDO('mysql:host=localhost;dbname=garage_parrot;charset=utf8', 'root', '');
-
+    require('./model/modelConnectionDB.php');
 
     // Variables.
     $email       = htmlspecialchars($_POST['email']);
@@ -29,7 +28,7 @@ if(!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passw
 
     while($emailVerification = $req->fetch()) {
         if($emailVerification['numberEmail'] != 0) {
-            header('location: index.php?error=1&message=Cette adresse e-mail est déjà utilisée.');
+            header('location: index.php?page=dashboard&error=1&message=Cette adresse e-mail est déjà utilisée.');
             exit();
         }
     }

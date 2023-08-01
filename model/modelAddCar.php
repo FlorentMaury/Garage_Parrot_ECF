@@ -10,8 +10,7 @@ if(
     ) {
 
     // Connexion à la base de données.
-    $bdd = new PDO('mysql:host=localhost;dbname=garage_parrot;charset=utf8', 'root', '');
-
+    require('./model/modelConnectionDB.php');
 
     // Variables.
     $carBrand = htmlspecialchars($_POST['carBrand']);

@@ -8,7 +8,7 @@ function home() {
 function dashboard() {
     require('model/modelNewUser.php');
 
-    require('model/modelSetSchedule.php');
+    require('model/modelSetServices.php');
 
     require('model/modelAddCar.php');
 

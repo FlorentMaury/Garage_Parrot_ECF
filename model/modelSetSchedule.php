@@ -1,34 +1,39 @@
 <?php
 
 if(
-    !empty($_POST['service']) && 
-    !empty($_POST['included']) && 
-    !empty($_POST['price'])
+    !empty($_POST['schedule']) && 
+    !empty($_POST['morningStart']) && 
+    !empty($_POST['morningEnd']) &&
+    !empty($_POST['afternoonStart']) && 
+    !empty($_POST['afternoonEnd'])
     ) {
 
     // Connexion à la base de données.
-    $bdd = new PDO('mysql:host=localhost;dbname=garage_parrot;charset=utf8', 'root', '');
-
+    require('./model/modelConnectionDB.php');
 
     // Variables.
-    $serviceId  = htmlspecialchars($_POST['service']);
-    $included = htmlspecialchars($_POST['included']);
-    $price    = htmlspecialchars($_POST['price']);
+    $dayId          = htmlspecialchars($_POST['schedule']);
+    $morningStart   = htmlspecialchars($_POST['morningStart']);
+    $morningEnd     = htmlspecialchars($_POST['morningEnd']);
+    $afternoonStart = htmlspecialchars($_POST['afternoonStart']);
+    $afternoonEnd   = htmlspecialchars($_POST['afternoonEnd']);
 
-    // Modifier un service.
-    $q = $bdd->prepare("SELECT service_name FROM `service` WHERE id = ?");
-    $q->execute([$serviceId]);
-    $serviceName = $q->fetchColumn();
+    // Sélection du jour.
+    $r = $bdd->prepare("SELECT day FROM `schedule` WHERE id = ?");
+    $r->execute([$dayId]);
+    $dayName = $r->fetchColumn();
 
-    // Modifier un service.
-    $req = $bdd->prepare('UPDATE service SET service_name = ?, included = ?, price = ? WHERE id = ?');
-    $req->execute([$serviceName, $included, $price, $serviceId]);
+    // Modifier un jour.
+    $req = $bdd->prepare('UPDATE schedule SET day = ?, morning_start = ?, morning_end = ?, afternoon_start = ? , afternoon_end = ? WHERE id = ?');
+    $req->execute([$dayName, $morningStart, $morningEnd, $afternoonStart, $afternoonEnd, $dayId]);
 
     
 
-    header('location: index.php?page=dashboard&modifyService=1');
+    header('location: index.php?page=dashboard&modifySchedule=1');
     exit();
 
+ } else {
+    header('location: index.php?page=dashboard&error=1&message=Une erreur s\'est produite.');
  }
 
 ?>

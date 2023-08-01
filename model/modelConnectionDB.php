@@ -8,7 +8,7 @@
         die('Erreur : ' .$e->getMessage());
     };
 
-    $requete  = $bdd->query('SELECT * FROM user');
+    $users    = $bdd->query('SELECT * FROM user');
     $schedule = $bdd->query('SELECT * FROM schedule');
     $service  = $bdd->query('SELECT * FROM service');
     $cars     = $bdd->query('SELECT * FROM cars');

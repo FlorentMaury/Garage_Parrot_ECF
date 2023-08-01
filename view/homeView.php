@@ -12,7 +12,7 @@
 
 
 <div class="container my-4">
-    <h2>Nos véhicules</h2>
+    <h2 id="cars">Nos véhicules</h2>
 
     <p class="fa-lg">Price:</p>
 
@@ -81,7 +81,7 @@
 <!-- LES SERVICES -->
 
 <div class="container my-4">
-    <h2>Nos services</h2>
+    <h2 id="services">Nos services</h2>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -117,6 +117,10 @@
 
 
 <!-- FORMULAIRE DE CONTACT -->
+
+<div class="container my-4">
+    <h2 id="contact">Nous contacter</h2>
+</div>
 
 
 <!-- MODALE DE CONNECTION -->

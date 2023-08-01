@@ -32,10 +32,10 @@
                     <a href="index.php?page=home" class="nav-link">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#contact" class="nav-link">Véhicules</a>
+                    <a href="#cars" class="nav-link">Véhicules</a>
                     </li>
                 <li class="nav-item">
-                    <a href="#contact" class="nav-link">Services</a>
+                    <a href="#services" class="nav-link">Services</a>
                     </li>
                 <li class="nav-item">
                     <a href="#contact" class="nav-link">Contact</a>
@@ -94,20 +94,20 @@
         <tr>
 
         <?php
-    require('./model/modelConnectionDB.php');
+            require('./model/modelConnectionDB.php');
 
-    while($time = $schedule->fetch()) {
+            while($time = $schedule->fetch()) {
 
-        ?>
-            <td><p><?= $time['day'] ?></p></td>
-            <td><p><?= $time['opening'] ?>h - </p></td>
-            <td><p><?= $time['break_start'] ?>h</p></td>
-            <td><p><?= $time['break_end'] ?>h - </p></td>
-            <td><p><?= $time['closing'] ?>h</p></td>
-        </tbody>
-        <?php
-    }
-    ?>
+                ?>
+                    <td><p><?= $time['day'] ?></p></td>
+                    <td><p><?= $time['morning_start'].' -' ?></p></td>
+                    <td><p><?= $time['morning_end'] ?></p></td>
+                    <td><p><?= $time['afternoon_start'].' -' ?></p></td>
+                    <td><p><?= $time['afternoon_end'] ?></p></td>
+                </tbody>
+                <?php
+            }
+            ?>
         </tr>
 </table>
 
