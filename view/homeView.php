@@ -25,58 +25,40 @@
     <input type="range" class="form-range" value="120" min="1000" max="10000" id="customRange2" autocompleted="">
 
     <p id="max-val">Current: 108$</p>
-
-
-    <div class="row">
-        <div class="col-md-4 col-sm-6">
-        <div class="card">
-        <img src="./public/assets/kangoo.jpg" alt="kangoo" class="card-img-top">
-            <div class="card-body">
-                <h5 class="card-title">RENAULT Kangoo</h5>
-                <h6 class="card-subtitle text-muted">Phase 2 1.5 DCI 90 LIFE</h6>
-                <p class="card-text">
-                    <ul>
-                        <li>125000 km</li>
-                        <li>5 portes</li>
-                        <li>4500 €</li>
-                    </ul>
-                    <button class="btn btn-dark">Détails</button>
-                </p>
-            </div>
-    </div>
-        </div>
-        <div class="col-md-4 col-sm-6">
-        <div class="card">
-        <img src="./public/assets/kangoo.jpg" alt="kangoo" class="card-img-top">
-            <div class="card-body">
-                <h5 class="card-title">RENAULT Kangoo</h5>
-                <h6 class="card-subtitle text-muted">Phase 2 1.5 DCI 90 LIFE</h6>
-                <p class="card-text">
-                    <ul>
-                        <li>125000 km</li>
-                        <li>5 portes</li>
-                        <li>4500 €</li>
-                    </ul>
-                    <button class="btn btn-dark">Détails</button>
-                </p>
-            </div>
-    </div>
-        </div>
-    </div>
 </div>
 
 
-<?php
-            while($car = $cars->fetch()) {
+
+<div class="container">
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 my-4">
+
+    <?php
+                while($car = $cars->fetch()) {
+                    ?>
+                                <div class="col">
+                        <div class="card">                        
+                            <img src="<?= './public//assets/cars/'.$car['car_img'] ?>" alt="Photo voiture" class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $car['car_brand'] ?></h5>
+                                <h6 class="card-subtitle text-muted"><?= $car['car_type'] ?></h6>
+                                <p class="card-text">
+                        <ul>
+                            <li><?= $car['car_km'] ?> Km</li>
+                            <li><?= $car['car_year'] ?></li>
+                            <li><?= $car['car_price'] ?> €</li>
+                        </ul>
+                        <button class="btn btn-dark">Détails</button>
+                    </p>
+                            </div>
+
+                        </div>
+                        </div>
+                    <?php
+                    }
                 ?>
-                    <div>
-                        <p scope="row"><?= $car['car_brand'] ?></p>
-                        <p><?= $car['car_price'] ?> €</p>
-                        <img src="<?= $car['car_img'] ?>"></img>
-                    </div>
-                <?php
-                }
-            ?>
+</div>
+
+</div>
 
 <!-- LES SERVICES -->
 

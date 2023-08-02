@@ -27,13 +27,10 @@ if(
     $req = $bdd->prepare('UPDATE schedule SET day = ?, morning_start = ?, morning_end = ?, afternoon_start = ? , afternoon_end = ? WHERE id = ?');
     $req->execute([$dayName, $morningStart, $morningEnd, $afternoonStart, $afternoonEnd, $dayId]);
 
-    
-
+   
     header('location: index.php?page=dashboard&modifySchedule=1');
     exit();
 
- } else {
-    header('location: index.php?page=dashboard&error=1&message=Une erreur s\'est produite.');
- }
+ } 
 
 ?>

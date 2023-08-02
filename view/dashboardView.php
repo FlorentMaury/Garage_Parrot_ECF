@@ -99,8 +99,8 @@
             </p>
 
             <p class="form-floating m-2">
-                <input type="text" name="afternoonStart" class="form-control" id="afternoonStart" placeholder="Reprise après-midi">
-                <label for="afternoonStart">Reprise après-midi</label>
+                <input type="text" name="afternoonStart" class="form-control" id="afternoonStart" placeholder="Début après-midi">
+                <label for="afternoonStart">Début après-midi</label>
             </p>
 
             <p class="form-floating m-2">
@@ -160,7 +160,7 @@
         <h2>Véhicules en ligne : </h2>
         <h2>Mettre un véhicule en ligne : </h2>
 
-        <form method="POST" action="index.php?page=dashboard">
+        <form method="POST" action="index.php?page=dashboard" enctype="multipart/form-data">
 
             <?php if(isset($_GET['addNewCar'])) {
             echo '<p class="mt-4 fw-bold text-success">Nouveau véhicule ajouté avec succès !</p>';
@@ -192,7 +192,7 @@
 
             <p class="form-floating mx-2 my-0">
                 <input type="number" name="carKm" class="form-control" id="carKm" placeholder="Kilométrage du véhicule">
-                <label for="carKm"></label>
+                <label for="carKm">Kilométrage du véhicule</label>
             </p>
 
             <p class="form-floating m-2">
