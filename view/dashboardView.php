@@ -6,13 +6,13 @@
 
 ?>
 
-<div class="container">
+<div class="container mt-5">
 
     <?php 
     if($_SESSION['id'] == 0) { 
     ?>
 
-    <h2>Nouveau collaborateur</h2>
+    <h2 class="pt-4">Nouveau collaborateur</h2>
 
     <form method="POST" action="index.php?page=dashboard">
 

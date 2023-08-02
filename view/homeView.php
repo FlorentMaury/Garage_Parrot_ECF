@@ -11,8 +11,8 @@
 
 
 
-<div class="container my-4">
-    <h2 id="cars">Nos véhicules</h2>
+<div class="container mt-5 my-4">
+    <h2 class="pt-4" id="cars">Nos véhicules</h2>
 
     <p class="fa-lg">Price:</p>
 
@@ -49,6 +49,9 @@
                             <li><?= $car['car_price'] ?> €</li>
                         </ul>
                         <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#more<?= $car['id'] ?>">Détails</button>
+                        <?php if(isset($_SESSION['connect'])) { ?>
+                            <a href="" class="btn btn-outline-danger">Supprimer</a>
+                        <?php } ?>
                     </p>
                 </div>
 
@@ -63,7 +66,7 @@
 
                     <!-- Titre de la modale -->
                     <div class="modal-header text-primary">
-                        <h5 class="modal-title"><?= $car['car_brand'] ?></h5>
+                        <h5 class="modal-title"><?= $car['car_brand'].' ' ?><?= $car['car_type'] ?></h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                     </div>
 

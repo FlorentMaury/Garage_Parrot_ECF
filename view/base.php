@@ -16,7 +16,7 @@
     
 
        <header>
-       <nav class="navbar navbar-dark bg-dark navbar-expand-md sticky-top" id="menu">
+       <nav class="navbar fixed-top navbar-dark bg-dark navbar-expand-md" id="menu">
     <div class="container">
         <div class="navbar-brand">
             GARAGE PARROT
@@ -80,6 +80,7 @@
 
 
 <h3>Nos horaires</h3>
+
 <table>
     <thead>
         <tr>
@@ -98,25 +99,27 @@
 
             while($time = $schedule->fetch()) {
 
-                ?>
-                    <td><p><?= $time['day'] ?></p></td>
-                    <td><p><?= $time['morning_start'].' -' ?></p></td>
-                    <td><p><?= $time['morning_end'] ?></p></td>
-                    <td><p><?= $time['afternoon_start'].' -' ?></p></td>
-                    <td><p><?= $time['afternoon_end'] ?></p></td>
-                </tbody>
-                <?php
+        ?>
+
+        <td><p><?= $time['day'] ?></p></td>
+        <td><p><?= $time['morning_start'].' -' ?></p></td>
+        <td><p><?= $time['morning_end'] ?></p></td>
+        <td><p><?= $time['afternoon_start'].' -' ?></p></td>
+        <td><p><?= $time['afternoon_end'] ?></p></td>
+
+    </tbody>
+        <?php
             }
-            ?>
+        ?>
         </tr>
 </table>
 
 
 </div>
 
-            <div class="col-md-4 d-flex align-items-center">
-                <span class="text-muted">© 2022 Florent Maury</span>
-            </div>
+<div class="col-md-4 d-flex align-items-center">
+    <span class="text-muted">© 2022 Florent Maury</span>
+</div>
 
 
     <!-- Script JavaScript pour animations (ex : modales) Bootstrap. -->
