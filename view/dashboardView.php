@@ -196,8 +196,23 @@
             </p>
 
             <p class="form-floating m-2">
-                <input type="file" name="carImg" class="form-control" id="carImg" placeholder="Photo du véhicule">
-                <label for="carImg">Photo du véhicule</label>
+                <input type="text" name="carDesc" class="form-control" id="carDesc" placeholder="Description du véhicule">
+                <label for="carDesc">Description</label>
+            </p>
+
+            <p class="form-floating m-2">
+                <input type="file" name="carImg1" class="form-control" id="carImg1" placeholder="Avant du véhicule">
+                <label for="carImg1">Avant du véhicule</label>
+            </p>
+
+            <p class="form-floating m-2">
+                <input type="file" name="carImg2" class="form-control" id="carImg2" placeholder="Côté du véhicule">
+                <label for="carImg2">Côté du véhicule</label>
+            </p>
+
+            <p class="form-floating m-2">
+                <input type="file" name="carImg3" class="form-control" id="carImg3" placeholder="Interieur du véhicule">
+                <label for="carImg3">Interieur du véhicule</label>
             </p>
 
             <button class="w-50 btn btn-lg btn-primary mt-4" type="submit">Enregister</button>

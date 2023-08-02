@@ -30,34 +30,87 @@
 
 
 <div class="container">
-<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 my-4">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 my-4">
 
-    <?php
-                while($car = $cars->fetch()) {
-                    ?>
-                                <div class="col">
-                        <div class="card">                        
-                            <img src="<?= './public//assets/cars/'.$car['car_img'] ?>" alt="Photo voiture" class="card-img-top">
-                            <div class="card-body">
-                                <h5 class="card-title"><?= $car['car_brand'] ?></h5>
-                                <h6 class="card-subtitle text-muted"><?= $car['car_type'] ?></h6>
-                                <p class="card-text">
+        <?php
+            while($car = $cars->fetch()) {
+        ?>
+
+        <div class="col">
+            <div class="card shadow-sm w-100 h-100" >                        
+                <img src="<?= './public/assets/cars/'.$car['car_img_face'] ?>" alt="Photo voiture" class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title"><?= $car['car_brand'] ?></h5>
+                    <h6 class="card-subtitle text-muted"><?= $car['car_type'] ?></h6>
+                    <p class="card-text">
                         <ul>
                             <li><?= $car['car_km'] ?> Km</li>
                             <li><?= $car['car_year'] ?></li>
                             <li><?= $car['car_price'] ?> €</li>
                         </ul>
-                        <button class="btn btn-dark">Détails</button>
+                        <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#more<?= $car['id'] ?>">Détails</button>
                     </p>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Modale -->
+
+        <div class="modal fade" id="more<?= $car['id'] ?>" data-bs-backdrop="static">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+
+                    <!-- Titre de la modale -->
+                    <div class="modal-header text-primary">
+                        <h5 class="modal-title"><?= $car['car_brand'] ?></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <!-- Corps de la modale -->
+                    <div class="modal-body">
+
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                            <img class="d-block w-100" src="<?= './public/assets/cars/'.$car['car_img_face'] ?>" alt="First slide">
                             </div>
-
+                            <div class="carousel-item">
+                            <img class="d-block w-100" src="<?= './public/assets/cars/'.$car['car_img_side'] ?>" alt="Second slide">
+                            </div>
+                            <div class="carousel-item">
+                            <img class="d-block w-100" src="<?= './public/assets/cars/'.$car['car_img_inside'] ?>" alt="Third slide">
+                            </div>
                         </div>
-                        </div>
-                    <?php
-                    }
-                ?>
-</div>
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    
 
+                        <p class="m-4"><?= $car['car_desc'] ?></p>
+                        <p class="m-4"><?= $car['car_price'] ?></p>
+                        <a href="#contact" class="btn">Reserver un essai</a>
+                    </div>
+
+                    <!-- Pied-de-page de la modale -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Fermer</button>
+                    </div>
+                </div>
+            </div>
+        </div> 
+
+        <?php
+            }
+        ?>
+
+    </div>
 </div>
 
 <!-- LES SERVICES -->
@@ -140,6 +193,7 @@
         </div>
     </div>
 </div>
+
 
 <?php 
 
