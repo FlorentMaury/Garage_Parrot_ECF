@@ -7,11 +7,45 @@
 ?>
 
 
+<!-- TEMOIGNAGES -->
+
+<div class="container mt-5 my-4">
+    <h2 class="pt-4" id="cars">Ils parlent de nous</h2>
+
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+
+        <div class="carousel-inner">
+            <?php while($testimonial = $testimonials->fetch()) { ?>
+
+                <div class="carousel-item active">
+                    <blockquote>
+                        <p>"<?= $testimonial['testimonial'] ?>"</p>
+                        <p><?= $testimonial['note'] ?> / 5</p>
+                        <footer>— <cite><?= $testimonial['client'] ?></cite> —</footer>
+                    </blockquote>
+                </div>
+
+            <?php } ?>
+
+            </div>
+
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
+
+
 <!-- LES VOITURES -->
 
 
 
-<div class="container mt-5 my-4">
+<div class="container my-4">
     <h2 class="pt-4" id="cars">Nos véhicules</h2>
 
     <p class="fa-lg">Price:</p>
@@ -50,7 +84,7 @@
                         </ul>
                         <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#more<?= $car['id'] ?>">Détails</button>
                         <?php if(isset($_SESSION['connect'])) { ?>
-                            <a href="" class="btn btn-outline-danger">Supprimer</a>
+                            <a href="index.php?page=home" class="btn btn-outline-danger">Supprimer</a>
                         <?php } ?>
                     </p>
                 </div>
@@ -76,13 +110,13 @@
                     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                            <img class="d-block w-100" src="<?= './public/assets/cars/'.$car['car_img_face'] ?>" alt="First slide">
+                                <img class="d-block w-100" src="<?= './public/assets/cars/'.$car['car_img_face'] ?>" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block w-100" src="<?= './public/assets/cars/'.$car['car_img_side'] ?>" alt="Second slide">
+                                <img class="d-block w-100" src="<?= './public/assets/cars/'.$car['car_img_side'] ?>" alt="Second slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block w-100" src="<?= './public/assets/cars/'.$car['car_img_inside'] ?>" alt="Third slide">
+                                <img class="d-block w-100" src="<?= './public/assets/cars/'.$car['car_img_inside'] ?>" alt="Third slide">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
@@ -158,6 +192,61 @@
 
 <div class="container my-4">
     <h2 id="contact">Nous contacter</h2>
+
+    <div class="px-4 pt-5 my-5 text-center">
+    <h2 class="display-4 fw-bold text-primary">Contactez-nous</h2>
+    <div class="col-lg-6 mx-auto my-1 p-3">
+        <form>
+            <p class="m-3 p-4">
+                Une question sur notre entreprise, une soudaine envie de nous rejoindre ? <br>
+                Une information que nous aurions manquée ? Ou juste nous envoyer de l'amour ? <br>
+                Envoyez-nous un email ! 
+            </p>
+            <p>
+                <button type="submit" name="contact" class="btn btn-primary my-3 w-25">
+                    <a class="text-decoration-none text-secondary" href="mailto:contact@florent-maury.fr?subject=Hello ITNews !&body=Je vous contacte car ">Envoyer !</a>
+                </button>
+            </p>
+        </form>
+    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5"></div>
+    <div class="overflow-hidden" style="max-height: 30vh;"></div>
+</div>
+</div>
+
+<!-- Témoignages -->
+
+<div class="container">
+
+    <h2>Votre expérience</h2>
+
+    <form method="POST" action="index.php?page=dashboard">
+
+    <?php if(isset($_GET['addNewTestimonialClient'])) {
+    echo '<p class="mt-4 fw-bold text-success">Témoignage enregistré avec succès !</p>';
+    }
+    else if(isset($_GET['error']) && !empty($_GET['message'])) {
+    echo '<p class="mt-4 fw-bold text-danger">'.htmlspecialchars($_GET['message']).'</p>';
+    } 
+    ?>
+
+    <p class="form-floating m-2">
+        <input type="text" name="testimonialContentClient" class="form-control" id="testimonialContentClient" placeholder="Témoignage">
+        <label for="testimonialContentClient">Votre expérience</label>
+    </p>
+
+    <p class="form-floating m-2">
+        <input type="text" name="customerClient" class="form-control" id="customerClient" placeholder="Nom du client">
+        <label for="customerClient">Votre nom</label>
+    </p>
+
+    <p class="form-floating m-2">
+        <input type="number" min="0" max="5" name="customerNoteClient" class="form-control" id="customerNoteClient" placeholder="Note du client">
+        <label for="customerNoteClient">Votre note (sur 5)</label>
+    </p>
+
+    <button class="w-50 btn btn-lg btn-primary mt-4" type="submit">Enregister</button>
+
+    </form>
 </div>
 
 

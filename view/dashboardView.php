@@ -89,22 +89,22 @@
             </div>
 
             <p class="form-floating m-2">
-                <input type="text" name="morningStart" class="form-control" id="morningStart" placeholder="Ouverture">
+                <input type="time" name="morningStart" class="form-control" id="morningStart" placeholder="Ouverture">
                 <label for="morningStart">Ouverture</label>
             </p>
 
             <p class="form-floating m-2">
-                <input type="text" name="morningEnd" class="form-control" id="morningEnd" placeholder="Fin de matinée">
+                <input type="time" name="morningEnd" class="form-control" id="morningEnd" placeholder="Fin de matinée">
                 <label for="morningEnd">Fin de matinée</label>
             </p>
 
             <p class="form-floating m-2">
-                <input type="text" name="afternoonStart" class="form-control" id="afternoonStart" placeholder="Début après-midi">
+                <input type="time" name="afternoonStart" class="form-control" id="afternoonStart" placeholder="Début après-midi">
                 <label for="afternoonStart">Début après-midi</label>
             </p>
 
             <p class="form-floating m-2">
-                <input type="text" name="afternoonEnd" class="form-control" id="afternoonEnd" placeholder="Fermeture">
+                <input type="time" name="afternoonEnd" class="form-control" id="afternoonEnd" placeholder="Fermeture">
                 <label for="afternoonEnd">Fermeture</label>
             </p>
             
@@ -157,7 +157,46 @@
         if($_SESSION['id'] > 0) { 
     ?>
 
-        <h2>Véhicules en ligne : </h2>
+        <h2 class="pt-4">Véhicules en ligne : </h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Marque</th>
+                    <th>Modèle</th>
+                    <th>Kilomètrage</th>
+                    <th>Prix</th>
+                    <th>Année</th>
+                    <th>Description</th>
+                    <th>Supprimer</th>
+                </tr>
+            </thead>
+
+        <?php
+        require('./model/modelConnectionDB.php');
+            while($car = $cars->fetch()) {
+        ?>
+
+            <tbody>
+                <tr>
+                    <td><?= $car['car_brand'] ?></td>
+                    <td><?= $car['car_type'] ?></td>
+                    <td><?= $car['car_km'] ?></td>
+                    <td><?= $car['car_price'] ?></td>
+                    <td><?= $car['car_year'] ?></td>
+                    <td><?= $car['car_desc'] ?></td>
+                    <td>
+                        <button type="button" class="btn btn-outline-danger">X</button>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+
+        <?php
+            }
+        ?>
+
         <h2>Mettre un véhicule en ligne : </h2>
 
         <form method="POST" action="index.php?page=dashboard" enctype="multipart/form-data">
@@ -219,9 +258,56 @@
 
         </form>
 
+        <h2>Témoignages clients : </h2>
+
+        <form method="POST" action="index.php?page=dashboard">
+
+            <?php if(isset($_GET['addNewTestimonial'])) {
+            echo '<p class="mt-4 fw-bold text-success">Témoignage enregistré avec succès !</p>';
+            }
+            else if(isset($_GET['error']) && !empty($_GET['message'])) {
+            echo '<p class="mt-4 fw-bold text-danger">'.htmlspecialchars($_GET['message']).'</p>';
+            } 
+            ?>
+
+            <p class="form-floating m-2">
+                <input type="text" name="testimonialContent" class="form-control" id="testimonialContent" placeholder="Témoignage">
+                <label for="testimonialContent">Témoignage</label>
+            </p>
+
+            <p class="form-floating m-2">
+                <input type="text" name="customer" class="form-control" id="customer" placeholder="Nom du client">
+                <label for="customer">Nom du client</label>
+            </p>
+
+            <p class="form-floating m-2">
+                <input type="number" min="0" max="5" name="customerNote" class="form-control" id="customerNote" placeholder="Note du client">
+                <label for="customerNote">Note du client</label>
+            </p>
+
+            <button class="w-50 btn btn-lg btn-primary mt-4" type="submit">Enregister</button>
+
+        </form>
+
+        <h2>Témoignages à valider : </h2>
+
+        <div class="container mt-5">
+
+            <?php while($testimonialNotValidate = $testimonialsNotValidate->fetch()) { ?>
+
+            <div class="d-flex">
+                <p>"<?= $testimonialNotValidate['testimonial'] ?>"</p>
+                <p>— <cite><?= $testimonialNotValidate['client'] ?></cite> —</p>
+                <button class="btn btn-outline-danger">X</button>
+            </div>
+
+            <?php } ?>
+    </div>
+</div>
+
     <?php } ?>
 
-    <div class="my-4">
+    <div class="container my-4">
         <button type="button" href="" class="btn btn-primary me-2">
             <a class="text-decoration-none text-white" href="index.php?page=logout">Déconnexion</a>
         </button>

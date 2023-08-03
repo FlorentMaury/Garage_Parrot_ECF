@@ -1,11 +1,7 @@
 <?php
 
 if(
-    !empty($_POST['schedule']) && 
-    !empty($_POST['morningStart']) && 
-    !empty($_POST['morningEnd']) &&
-    !empty($_POST['afternoonStart']) && 
-    !empty($_POST['afternoonEnd'])
+    !empty($_POST['schedule']) 
     ) {
 
     // Connexion à la base de données.
@@ -24,6 +20,10 @@ if(
     $dayName = $r->fetchColumn();
 
     // Modifier un jour.
+if($morningStart == null) {
+    $morningStart = 'Fermé';
+}
+
     $req = $bdd->prepare('UPDATE schedule SET day = ?, morning_start = ?, morning_end = ?, afternoon_start = ? , afternoon_end = ? WHERE id = ?');
     $req->execute([$dayName, $morningStart, $morningEnd, $afternoonStart, $afternoonEnd, $dayId]);
 
