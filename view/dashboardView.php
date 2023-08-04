@@ -159,6 +159,14 @@
 
         <h2 class="pt-4">Véhicules en ligne : </h2>
 
+        <?php if(isset($_GET['deletedCar'])) {
+            echo '<p class="mt-4 fw-bold text-success">Vehicule supprimé avec succès !</p>';
+            }
+            else if(isset($_GET['error']) && !empty($_GET['message'])) {
+            echo '<p class="mt-4 fw-bold text-danger">'.htmlspecialchars($_GET['message']).'</p>';
+            } 
+            ?>
+
         <table>
             <thead>
                 <tr>
@@ -186,12 +194,12 @@
                     <td><?= $car['car_year'] ?></td>
                     <td><?= $car['car_desc'] ?></td>
                     <td>
-                        <button 
-                            href='./model/modelDelete.php?id=<?=$car["id"]?>' 
+                        <a 
+                            href='./model/modelDeleteCar.php?id=<?=$car["id"]?>' 
                             type="button" 
                             class="btn btn-outline-danger">
                             X
-                        </button>
+                        </a>
                     </td>
                 </tr>
             </tbody>
@@ -316,7 +324,7 @@
                 <p>— <cite><?= $testimonialNotValidate['client'] ?></cite> —</p>
                 <p><?= $testimonialNotValidate['note'] ?>/5</p>
                 <a href='./model/modelValidateTestimonial.php?id=<?=$testimonialNotValidate["id"]?>' class="btn btn-outline-success">V</a>
-                <a href='./model/modelDelete.php?id=<?=$testimonialNotValidate["id"]?>' class="btn btn-outline-danger">X</a>
+                <a href='./model/modelDeleteTestimonial.php?id=<?=$testimonialNotValidate["id"]?>' class="btn btn-outline-danger">X</a>
             </div>
 
             <?php } ?>
