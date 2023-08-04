@@ -12,7 +12,7 @@
     if($_SESSION['id'] == 0) { 
     ?>
 
-    <h2 class="pt-4">Nouveau collaborateur</h2>
+    <h2 class="pt-4 display-4 text-primary text-center">Nouveau collaborateur</h2>
 
     <form method="POST" action="index.php?page=dashboard">
 
@@ -46,7 +46,7 @@
     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5"></div>
     <div class="overflow-hidden" style="max-height: 30vh;"></div>
 
-    <h2>Liste des employés : </h2>
+    <h2 class="display-4 text-primary text-center">Liste des employés : </h2>
 
     <?php
     require('./model/modelConnectionDB.php');
@@ -63,7 +63,7 @@
     }
     ?>
 
-        <h2>Horaires du garage : </h2>
+        <h2 class="display-4 text-primary text-center">Horaires du garage : </h2>
 
         <form method="POST" action="index.php?page=dashboard">
 
@@ -112,7 +112,7 @@
 
         </form>
 
-        <h2>Modification des forfait d'entretient : </h2>
+        <h2 class="display-4 text-primary text-center">Modification des forfait d'entretient : </h2>
 
         <form method="POST" action="index.php?page=dashboard">
 
@@ -157,7 +157,7 @@
         if($_SESSION['id'] > 0) { 
     ?>
 
-        <h2 class="pt-4">Véhicules en ligne : </h2>
+        <h2 class="pt-4 display-4 text-primary text-center">Véhicules en ligne : </h2>
 
         <?php if(isset($_GET['deletedCar'])) {
             echo '<p class="mt-4 fw-bold text-success">Vehicule supprimé avec succès !</p>';
@@ -197,7 +197,7 @@
                         <a 
                             href='./model/modelDeleteCar.php?id=<?=$car["id"]?>' 
                             type="button" 
-                            class="btn btn-outline-danger">
+                            class="btn btn-info">
                             X
                         </a>
                     </td>
@@ -210,7 +210,7 @@
             }
         ?>
 
-        <h2>Mettre un véhicule en ligne : </h2>
+        <h2 class="display-4 text-primary text-center">Mettre un véhicule en ligne : </h2>
 
         <form method="POST" action="index.php?page=dashboard" enctype="multipart/form-data">
 
@@ -271,7 +271,7 @@
 
         </form>
 
-        <h2>Témoignages clients : </h2>
+        <h2 class="display-4 text-primary text-center">Témoignages clients : </h2>
 
         <form method="POST" action="index.php?page=dashboard">
 
@@ -302,7 +302,7 @@
 
         </form>
 
-        <h2>Témoignages à valider : </h2>
+        <h2 class="display-4 text-primary text-center">Témoignages à valider : </h2>
 
         <div class="container mt-5">
 
@@ -319,12 +319,12 @@
 
             <?php while($testimonialNotValidate = $testimonialsNotValidate->fetch()) { ?>
 
-            <div class="d-flex">
+            <div class="d-flex justify-content-center">
                 <p>"<?= $testimonialNotValidate['testimonial'] ?>"</p>
                 <p>— <cite><?= $testimonialNotValidate['client'] ?></cite> —</p>
                 <p><?= $testimonialNotValidate['note'] ?>/5</p>
-                <a href='./model/modelValidateTestimonial.php?id=<?=$testimonialNotValidate["id"]?>' class="btn btn-outline-success">V</a>
-                <a href='./model/modelDeleteTestimonial.php?id=<?=$testimonialNotValidate["id"]?>' class="btn btn-outline-danger">X</a>
+                <a href='./model/modelValidateTestimonial.php?id=<?=$testimonialNotValidate["id"]?>' class="btn btn-success">V</a>
+                <a href='./model/modelDeleteTestimonial.php?id=<?=$testimonialNotValidate["id"]?>' class="btn btn-info">X</a>
             </div>
 
             <?php } ?>
@@ -333,7 +333,7 @@
 
     <?php } ?>
 
-    <div class="container my-4">
+    <div class="container my-4 d-flex justify-content-center">
         <button type="button" href="" class="btn btn-primary me-2">
             <a class="text-decoration-none text-white" href="index.php?page=logout">Déconnexion</a>
         </button>

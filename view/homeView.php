@@ -10,14 +10,14 @@
 <!-- TEMOIGNAGES -->
 
 <div class="container mt-5 my-4">
-    <h2 class="pt-4" id="cars">Ils parlent de nous</h2>
+    <h2 class="pt-4 display-4 text-primary text-center" id="cars">Ils parlent de nous</h2>
 
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 
         <div class="carousel-inner">
             <?php while($testimonial = $testimonials->fetch()) { ?>
 
-                <div class="carousel-item active">
+                <div class="carousel-item active text-center">
                     <blockquote>
                         <p>"<?= $testimonial['testimonial'] ?>"</p>
                         <p><?= $testimonial['note'] ?> / 5</p>
@@ -31,11 +31,11 @@
 
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
+            <span class="sr-only text-dark">Précédent</span>
         </a>
         <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
+            <span class="sr-only text-dark">Suivant</span>
         </a>
     </div>
 </div>
@@ -46,19 +46,14 @@
 
 
 <div class="container my-4">
-    <h2 class="pt-4" id="cars">Nos véhicules</h2>
+    <h2 class="pt-4 display-4 text-primary text-center" id="cars">Nos véhicules</h2>
 
     <p class="fa-lg">Price:</p>
 
-    <label for="customRange" class="form-label">Min</label>
-    <input type="range" class="form-range" value="80" min="0" max="3000" id="customRange" autocompleted="">
-
-    <p id="min-val">Current: 87$</p>
-
-    <label for="customRange2" class="form-label">Max</label>
-    <input type="range" class="form-range" value="120" min="1000" max="10000" id="customRange2" autocompleted="">
-
-    <p id="max-val">Current: 108$</p>
+    <input type="hidden" id="hidden_minimum_price" value="0">
+    <input type="hidden" id="hidden_maximium_price" value="65000">
+    <p id="price_show">1000 - 65000</p>
+    <div id='price_range'></div>
 </div>
 
 
@@ -154,7 +149,7 @@
 <!-- LES SERVICES -->
 
 <div class="container my-4">
-    <h2 id="services">Nos services</h2>
+    <h2 id="services" class="display-4 text-primary text-center">Nos services</h2>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -190,24 +185,38 @@
 
 
 <!-- FORMULAIRE DE CONTACT -->
+<div class="d-flex flex-column flex-md-row">
+<div class="container">
+    <h2 id="contact" class="display-4 text-primary text-center">Nous contacter</h2>
 
-<div class="container my-4">
-    <h2 id="contact">Nous contacter</h2>
-
-    <div class="px-4 pt-5 my-5 text-center">
-    <h2 class="display-4 fw-bold text-primary">Contactez-nous</h2>
     <div class="col-lg-6 mx-auto my-1 p-3">
-        <form>
-            <p class="m-3 p-4">
-                Une question sur notre entreprise, une soudaine envie de nous rejoindre ? <br>
-                Une information que nous aurions manquée ? Ou juste nous envoyer de l'amour ? <br>
-                Envoyez-nous un email ! 
-            </p>
-            <p>
-                <button type="submit" name="contact" class="btn btn-primary my-3 w-25">
-                    <a class="text-decoration-none text-white" href="mailto:contact@florent-maury.fr?subject=Hello ITNews !&body=Je vous contacte car ">Envoyer !</a>
-                </button>
-            </p>
+    <form method="POST" action="index.php?page=home">
+
+        <?php if(isset($_GET['askForContact'])) {
+        echo '<p class="mt-4 fw-bold text-success">Message envoyé avec succès !</p>';
+        }
+        else if(isset($_GET['error']) && !empty($_GET['message'])) {
+        echo '<p class="mt-4 fw-bold text-danger">'.htmlspecialchars($_GET['message']).'</p>';
+        } 
+        ?>
+
+        <p class="form-floating m-2">
+            <input type="text" name="customerName" class="form-control" id="customerName" placeholder="Votre nom">
+            <label for="customerName">Votre nom</label>
+        </p>
+
+        <p class="form-floating m-2">
+            <input type="email" name="customerEmail" class="form-control" id="customerEmail" placeholder="Votre email">
+            <label for="customerEmail">Votre email</label>
+        </p>
+
+        <p class="form-floating m-2">
+            <input type="text" rows='5' name="customerMessage" class="form-control" id="customerMessage" placeholder="Votre message">
+            <label for="customerMessage">Votre message</label>
+        </p>
+
+        <button class="w-50 btn btn-lg btn-primary mt-4" type="submit">Enregister</button>
+
         </form>
     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5"></div>
     <div class="overflow-hidden" style="max-height: 30vh;"></div>
@@ -218,9 +227,9 @@
 
 <div class="container">
 
-    <h2>Votre expérience</h2>
+    <h2 class="display-4 text-primary text-center">Votre expérience</h2>
 
-    <form method="POST" action="index.php?page=dashboard">
+    <form class="col-lg-6 mx-auto my-1 p-3" method="POST" action="index.php?page=dashboard">
 
     <?php if(isset($_GET['addNewTestimonialClient'])) {
     echo '<p class="mt-4 fw-bold text-success">Témoignage enregistré avec succès !</p>';
@@ -248,6 +257,8 @@
     <button class="w-50 btn btn-lg btn-primary mt-4" type="submit">Enregister</button>
 
     </form>
+</div>
+
 </div>
 
 

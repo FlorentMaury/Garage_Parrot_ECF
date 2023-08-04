@@ -6,17 +6,23 @@ $theme-colors: (
 	"info": #d9777f,
 	"dark": #262526,
 	"light": #f2f2f2,
+	"success": #198754,
 );
 
 $font-family-base: Barlow, Roboto, sans-serif;
 $headings-font-family: Rajdhani, sans-serif;
 
-// :root {
-// 	--bs-body-font-family: Barlow, Roboto, sans-serif;
-// }
+:root {
+	--bs-body-font-family: Barlow, Roboto, sans-serif;
+}
 
-// h2 {
-// 	font-family: Rajdhani;
-// }
+h2 {
+	font-family: Rajdhani;
+	color: #d92332;
+}
+
+html {
+	font-family: Barlow;
+}
 
 @import "../vendor/node_modules/bootstrap/scss/bootstrap.scss";
