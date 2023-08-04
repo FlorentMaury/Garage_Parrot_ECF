@@ -131,8 +131,9 @@
                     
 
                         <p class="m-4"><?= $car['car_desc'] ?></p>
-                        <p class="m-4"><?= $car['car_price'] ?></p>
-                        <a href="#contact" class="btn">Reserver un essai</a>
+                        <p class="m-4"><?= $car['car_price'] ?> €</p>
+                        <p class="m-4"><?= $car['car_km'] ?> km</p>
+                        <a href="#contact" class="btn btn-outline-info">Reserver un essai</a>
                     </div>
 
                     <!-- Pied-de-page de la modale -->
@@ -204,7 +205,7 @@
             </p>
             <p>
                 <button type="submit" name="contact" class="btn btn-primary my-3 w-25">
-                    <a class="text-decoration-none text-secondary" href="mailto:contact@florent-maury.fr?subject=Hello ITNews !&body=Je vous contacte car ">Envoyer !</a>
+                    <a class="text-decoration-none text-white" href="mailto:contact@florent-maury.fr?subject=Hello ITNews !&body=Je vous contacte car ">Envoyer !</a>
                 </button>
             </p>
         </form>

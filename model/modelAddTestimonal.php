@@ -45,7 +45,7 @@ if(
     $req = $bdd->prepare('INSERT INTO testimonials(testimonial, note, client, authorized) VALUES(?, ?, ?, ?)');
     $req->execute([$testimonialContent,$customerNote, $customer, $authorized]);
 
-    header('location: index.php?page=dashboard&addNewTestimonial=1');
+    header('location: index.php?page=home&addNewTestimonial=1');
     exit();
 
  }

@@ -186,7 +186,12 @@
                     <td><?= $car['car_year'] ?></td>
                     <td><?= $car['car_desc'] ?></td>
                     <td>
-                        <button type="button" class="btn btn-outline-danger">X</button>
+                        <button 
+                            href='./model/modelDelete.php?id=<?=$car["id"]?>' 
+                            type="button" 
+                            class="btn btn-outline-danger">
+                            X
+                        </button>
                     </td>
                 </tr>
             </tbody>
@@ -293,12 +298,25 @@
 
         <div class="container mt-5">
 
+            <?php if(isset($_GET['deletedTestimonial'])) {
+            echo '<p class="mt-4 fw-bold text-success">Témoignage supprimé avec succès !</p>';
+            }
+            else if(isset($_GET['error']) && !empty($_GET['message'])) {
+            echo '<p class="mt-4 fw-bold text-danger">'.htmlspecialchars($_GET['message']).'</p>';
+            } 
+            else if(isset($_GET['validateTestimonial'])) {
+                echo '<p class="mt-4 fw-bold text-success">Témoignage validé avec succès !</p>';
+            } 
+            ?>
+
             <?php while($testimonialNotValidate = $testimonialsNotValidate->fetch()) { ?>
 
             <div class="d-flex">
                 <p>"<?= $testimonialNotValidate['testimonial'] ?>"</p>
                 <p>— <cite><?= $testimonialNotValidate['client'] ?></cite> —</p>
-                <button class="btn btn-outline-danger">X</button>
+                <p><?= $testimonialNotValidate['note'] ?>/5</p>
+                <a href='./model/modelValidateTestimonial.php?id=<?=$testimonialNotValidate["id"]?>' class="btn btn-outline-success">V</a>
+                <a href='./model/modelDelete.php?id=<?=$testimonialNotValidate["id"]?>' class="btn btn-outline-danger">X</a>
             </div>
 
             <?php } ?>
