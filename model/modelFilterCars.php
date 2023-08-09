@@ -7,20 +7,17 @@ if(isset($_POST["action"])) {
     $query = "SELECT * FROM cars";
 
     if(isset($_POST["minimum_price"], $_POST["maximum_price"]) && !empty($_POST["minimum_price"]) && !empty($_POST["maximum_price"])) {
-        
-        $min = $_POST["minimum_price"];
-        $max = $_POST["maximum_price"];
-        
-        $query .= " WHERE car_price BETWEEN ".$_POST["minimum_price"]." AND ".$_POST["maximum_price"]."";
+        $query .= " WHERE car_price BETWEEN ".$_POST["minimum_price"]." AND ".$_POST["maximum_price"]." ";
         print_r($query);
     }
 
     if(isset($_POST["minimum_km"], $_POST["maximum_km"]) && !empty($_POST["minimum_km"]) && !empty($_POST["maximum_km"])) {
+        $query .= " WHERE car_km BETWEEN ".$_POST["minimum_km"]." AND ".$_POST["maximum_km"]." ";
+        print_r($query);
+    }
 
-        $min = $_POST["minimum_km"];
-        $max = $_POST["maximum_km"];
-        
-        $query .= " AND car_km BETWEEN ".$_POST["minimum_km"]." AND ".$_POST["maximum_km"]."";
+    if(isset($_POST["minimum_year"], $_POST["maximum_year"]) && !empty($_POST["minimum_year"]) && !empty($_POST["maximum_year"])) {
+        $query .= " WHERE car_year BETWEEN ".$_POST["minimum_year"]." AND ".$_POST["maximum_year"]." ";
         print_r($query);
     }
         
@@ -45,9 +42,7 @@ if(isset($_POST["action"])) {
                 ';
             }
         } else {
-
          $output = '<h3>Aucun résultat</h3>';
-
         }
 
     echo $output;

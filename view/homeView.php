@@ -54,16 +54,16 @@
 
     <div class="list-group w-25">
         <h3>Kilométrage</h3>
-        <input type="hidden" id="hidden_minimum_price" value="0" />
-        <input type="hidden" id="hidden_maximum_price" value="500000" />
+        <input type="hidden" id="hidden_minimum_km" value="0" />
+        <input type="hidden" id="hidden_maximum_km" value="500000" />
         <p id="km_show">0 - 500000</p>
         <div id="km_range"></div>
     </div>     
 
     <div class="list-group w-25">
         <h3>Année</h3>
-        <input type="hidden" id="hidden_minimum_price" value="1980" />
-        <input type="hidden" id="hidden_maximum_price" value="2023" />
+        <input type="hidden" id="hidden_minimum_year" value="0" />
+        <input type="hidden" id="hidden_maximum_year" value="2023" />
         <p id="year_show">1980 - 2023</p>
         <div id="year_range"></div>
     </div>                

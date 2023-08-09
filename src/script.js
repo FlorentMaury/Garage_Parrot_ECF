@@ -9,10 +9,10 @@ $(document).ready(function () {
         var maximum_price = $('#hidden_maximum_price').val();
 
         var minimum_year = $('#hidden_minimum_year').val();
-        var maximum_year = $('#hidden_minimum_year').val();
+        var maximum_year = $('#hidden_maximum_year').val();
 
         var minimum_km = $('#hidden_minimum_km').val();
-        var maximum_km = $('#hidden_minimum_km').val();
+        var maximum_km = $('#hidden_maximum_km').val();
         $.ajax({
 
 
