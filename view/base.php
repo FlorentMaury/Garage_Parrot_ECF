@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./public/assets/favicon.ico" type="image/x-icon">
     <meta name="description" content="Garage Parrot 15 ans d'expérience à votre service.">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="./design/defaut.css">
-    <title><?= $title ?> | Garage Parrot</title>
+    <title><?= $title ?> | Garage V. Parrot</title>
 </head>
 <body> 
        
@@ -14,10 +17,11 @@
     
 
        <header>
-       <nav class="navbar fixed-top navbar-dark bg-dark navbar-expand-md" id="menu">
+       <nav class="navbar fixed navbar-dark bg-dark navbar-expand-md" id="menu">
     <div class="container">
         <div class="navbar-brand">
-            GARAGE PARROT
+            <img src="./public/assets/logouni.png" alt="logo">
+            GARAGE V. PARROT
         </div>
         <!-- Le bouton s'affichera sur les petits écrans -->
         <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#smallNav">
@@ -119,11 +123,35 @@
     <span class="text-muted">© 2022 Florent Maury</span>
 </div>
 
+    <!-- JQUery -->
+
+<script
+    src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+    crossorigin="anonymous">
+</script>
+
+<script
+    src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"
+    integrity="sha256-lSjKY0/srUM9BE3dPm+c4fBo1dky2v27Gdjm2uoZaL0="
+    crossorigin="anonymous">
+</script>
 
     <!-- Script JavaScript pour animations (ex : modales) Bootstrap. -->
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" 
+    crossorigin="anonymous">
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" 
+    integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" 
+    crossorigin="anonymous">
+</script>
+
+    <!-- Script personnel -->
+
+<script src="./src/script.js"></script>
 
 </body>
 </html>

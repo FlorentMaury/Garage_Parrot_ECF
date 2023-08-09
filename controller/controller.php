@@ -2,6 +2,7 @@
 
 function home() {
     require('model/modelConnectionDB.php');
+    require('model/modelFilterCars.php');
     
     require('view/homeView.php');
 };

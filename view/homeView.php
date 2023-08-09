@@ -10,7 +10,7 @@
 <!-- TEMOIGNAGES -->
 
 <div class="container mt-5 my-4">
-    <h2 class="pt-4 display-4 text-primary text-center" id="cars">Ils parlent de nous</h2>
+    <h2 class="pt-5 display-4 text-primary text-center" id="cars">Ils parlent de nous</h2>
 
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 
@@ -43,20 +43,36 @@
 
 <!-- LES VOITURES -->
 
+<div class="container d-flex justify-content-between">
+    <div class="list-group w-25">
+        <h3>Prix</h3>
+        <input type="hidden" id="hidden_minimum_price" value="0" />
+        <input type="hidden" id="hidden_maximum_price" value="65000" />
+        <p id="price_show">10 - 5000</p>
+        <div id="price_range"></div>
+    </div>    
 
+    <div class="list-group w-25">
+        <h3>Kilométrage</h3>
+        <input type="hidden" id="hidden_minimum_price" value="0" />
+        <input type="hidden" id="hidden_maximum_price" value="500000" />
+        <p id="km_show">0 - 500000</p>
+        <div id="km_range"></div>
+    </div>     
 
-<div class="container my-4">
-    <h2 class="pt-4 display-4 text-primary text-center" id="cars">Nos véhicules</h2>
-
-    <p class="fa-lg">Price:</p>
-
-    <input type="hidden" id="hidden_minimum_price" value="0">
-    <input type="hidden" id="hidden_maximium_price" value="65000">
-    <p id="price_show">1000 - 65000</p>
-    <div id='price_range'></div>
+    <div class="list-group w-25">
+        <h3>Année</h3>
+        <input type="hidden" id="hidden_minimum_price" value="1980" />
+        <input type="hidden" id="hidden_maximum_price" value="2023" />
+        <p id="year_show">1980 - 2023</p>
+        <div id="year_range"></div>
+    </div>                
 </div>
 
-
+<div class="col-md-9">
+    <div class="row filter_data">
+    </div>
+</div>
 
 <div class="container">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 my-4">
@@ -128,11 +144,41 @@
                         <p class="m-4"><?= $car['car_desc'] ?></p>
                         <p class="m-4"><?= $car['car_price'] ?> €</p>
                         <p class="m-4"><?= $car['car_km'] ?> km</p>
-                        <a href="#contact" class="btn btn-outline-info">Reserver un essai</a>
+
+                        <form method="POST" action="index.php?page=home&car=<?= $car['id'] ?>">
+
+                            <?php if(isset($_GET['askForDetails'])) {
+                            echo '<p class="mt-4 fw-bold text-success">Demande envoyé avec succès !</p>';
+                            }
+                            else if(isset($_GET['error']) && !empty($_GET['message'])) {
+                            echo '<p class="mt-4 fw-bold text-danger">'.htmlspecialchars($_GET['message']).'</p>';
+                            } 
+                            ?>
+
+                            <p class="form-floating">
+                                <input type="text" name="customerDetailsName" class="form-control" id="customerDetailsName" placeholder="Votre nom">
+                                <label for="customerDetailsName">Votre nom</label>
+                            </p>
+
+                            <p class="form-floating">
+                                <input type="email" name="customerDetailsEmail" class="form-control" id="customerDetailsEmail" placeholder="Votre email">
+                                <label for="customerDetailsEmail">Votre email</label>
+                            </p>
+
+                            <p class="form-floating">
+                                <input type="text" rows='5' name="customerDetailsMessage" class="form-control" id="customerDetailsMessage" placeholder="Votre message">
+                                <label for="customerDetailsMessage">Votre demande</label>
+                            </p>
+
+                            <button class="btn btn-outline-info" type="submit">En savoir plus</button>
+
+                        </form>
                     </div>
 
                     <!-- Pied-de-page de la modale -->
                     <div class="modal-footer">
+
+
                         <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Fermer</button>
                     </div>
                 </div>
@@ -297,7 +343,6 @@
         </div>
     </div>
 </div>
-
 
 <?php 
 
