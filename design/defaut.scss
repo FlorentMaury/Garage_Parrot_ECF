@@ -1,5 +1,7 @@
+// Import des polices Barlow et Rajdhani.
 @import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rajdhani:wght@300;400;500;600;700&display=swap");
 
+// Modification des couleurs principales de Bootstrap.
 $theme-colors: (
 	"primary": #d92332,
 	"secondary": #d94350,
@@ -9,6 +11,7 @@ $theme-colors: (
 	"success": #198754,
 );
 
+// Modification des polices dans l'application via les variables créées par Bootstrap.
 $font-family-base: Barlow, Roboto, sans-serif;
 $headings-font-family: Rajdhani, sans-serif;
 
@@ -25,4 +28,5 @@ html {
 	font-family: Barlow;
 }
 
+// Import du CSS de Bootstrap.
 @import "../vendor/node_modules/bootstrap/scss/bootstrap.scss";

@@ -1,5 +1,6 @@
 <?php
 
+// Vérification du formulaire d'ajout d'un employé.
 if(!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passwordTwo'])) {
 
     // Connexion à la base de données.
@@ -26,6 +27,7 @@ if(!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passw
     $req = $bdd->prepare('SELECT COUNT(*) as numberEmail FROM user WHERE email = ?');
     $req->execute([$email]);
 
+    // Vérification d'un éventuel doublon.
     while($emailVerification = $req->fetch()) {
         if($emailVerification['numberEmail'] != 0) {
             header('location: index.php?page=dashboard&error=1&message=Cette adresse e-mail est déjà utilisée.');
@@ -44,6 +46,7 @@ if(!empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['passw
     $req = $bdd->prepare('INSERT INTO user(email, password, secret) VALUES(?, ?, ?)');
     $req->execute([$email, $password, $secret]);
 
+    // Redirection.
     header('location: index.php?page=dashboard&success=1');
     exit();
 

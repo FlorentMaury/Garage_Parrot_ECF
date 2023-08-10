@@ -1,21 +1,27 @@
+<!-- Contenu réservé aux employés du garage. -->
 <?php 
 
+    // Mise à jour du contenu du titre de la page.
     $title = 'Tableau de bord';  
 
+    // Début d'enregistrement du contenu HTML.
     ob_start();
 
 ?>
 
 <div class="container mt-5">
 
+    <!-- Contenu réservé au patron du garage. -->
     <?php 
     if($_SESSION['id'] == 0) { 
     ?>
 
     <h2 class="pt-4 display-4 text-primary text-center">Nouveau collaborateur</h2>
 
+    <!-- Formulaire d'enregistrement d'un nouvel employé. -->
     <form method="POST" action="index.php?page=dashboard">
 
+        <!-- Messages de succès ou d'erreur, le cas échéant. -->
         <?php if(isset($_GET['success'])) {
         echo '<p class="mt-4 fw-bold text-success">Inscription réalisée avec succès !</p>';
         }
@@ -24,6 +30,7 @@
         } 
         ?>
 
+        <!-- Formulaire. -->
         <p class="form-floating m-2">
             <input type="email" name="email" class="form-control" id="email" placeholder="dupont@email.com">
             <label for="email">Email</label>
@@ -43,9 +50,7 @@
 
     </form>
 
-    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5"></div>
-    <div class="overflow-hidden" style="max-height: 30vh;"></div>
-
+        <!-- Liste des employés. -->
     <h2 class="display-4 text-primary text-center">Liste des employés : </h2>
 
     <?php
@@ -63,102 +68,117 @@
     }
     ?>
 
-        <h2 class="display-4 text-primary text-center">Horaires du garage : </h2>
+    <!-- Horaires du garage pour modification. -->
+    <h2 class="display-4 text-primary text-center">Horaires du garage : </h2>
 
-        <form method="POST" action="index.php?page=dashboard">
+    <!-- Formulaire de modification. -->
+    <form method="POST" action="index.php?page=dashboard">
 
-            <?php if(isset($_GET['modifySchedule'])) {
-            echo '<p class="mt-4 fw-bold text-success">Horaire modifiée avec succès !</p>';
-            }
-            else if(isset($_GET['error']) && !empty($_GET['message'])) {
-            echo '<p class="mt-4 fw-bold text-danger">'.htmlspecialchars($_GET['message']).'</p>';
-            } 
-            ?>
+        <!-- Message de validation ou d'erreur. -->
+        <?php if(isset($_GET['modifySchedule'])) {
+        echo '<p class="mt-4 fw-bold text-success">Horaire modifiée avec succès !</p>';
+        }
+        else if(isset($_GET['error']) && !empty($_GET['message'])) {
+        echo '<p class="mt-4 fw-bold text-danger">'.htmlspecialchars($_GET['message']).'</p>';
+        } 
+        ?>
 
-            <div class="input-group mb-3">
-                <label  class="input-group-text" for="inputGroupSelect01">Options</label>
-                <select name="schedule" class="form-select" id="inputGroupSelect01">
-                    <option selected>Choix du jour</option>
-                    <?php
-                        while($timetable = $schedule->fetch()) {
-                        ?>
-                            <option value="<?= $timetable['id']?>" ><?= $timetable['day']?></option>
+        <!-- Menu déroulant pour chacun des jours et récupérer l'id. -->
+        <div class="input-group mb-3">
+            <label  class="input-group-text" for="inputGroupSelect01">Options</label>
+            <select name="schedule" class="form-select" id="inputGroupSelect01">
+                <option selected>Choix du jour</option>
+                <?php
+                    while($timetable = $schedule->fetch()) {
+                    ?>
+                        <option value="<?= $timetable['id']?>" ><?= $timetable['day']?></option>
 
-                        <?php }  ?>
-                </select>
-            </div>
+                    <?php }  ?>
+            </select>
+        </div>
 
-            <p class="form-floating m-2">
-                <input type="time" name="morningStart" class="form-control" id="morningStart" placeholder="Ouverture">
-                <label for="morningStart">Ouverture</label>
-            </p>
+        <!-- Modification des horaires. -->
+        <p class="form-floating m-2">
+            <input type="time" name="morningStart" class="form-control" id="morningStart" placeholder="Ouverture">
+            <label for="morningStart">Ouverture</label>
+        </p>
 
-            <p class="form-floating m-2">
-                <input type="time" name="morningEnd" class="form-control" id="morningEnd" placeholder="Fin de matinée">
-                <label for="morningEnd">Fin de matinée</label>
-            </p>
+        <p class="form-floating m-2">
+            <input type="time" name="morningEnd" class="form-control" id="morningEnd" placeholder="Fin de matinée">
+            <label for="morningEnd">Fin de matinée</label>
+        </p>
 
-            <p class="form-floating m-2">
-                <input type="time" name="afternoonStart" class="form-control" id="afternoonStart" placeholder="Début après-midi">
-                <label for="afternoonStart">Début après-midi</label>
-            </p>
+        <p class="form-floating m-2">
+            <input type="time" name="afternoonStart" class="form-control" id="afternoonStart" placeholder="Début après-midi">
+            <label for="afternoonStart">Début après-midi</label>
+        </p>
 
-            <p class="form-floating m-2">
-                <input type="time" name="afternoonEnd" class="form-control" id="afternoonEnd" placeholder="Fermeture">
-                <label for="afternoonEnd">Fermeture</label>
-            </p>
-            
-            <button class="w-50 btn btn-lg btn-primary mt-4" type="submit">Enregister</button>
+        <p class="form-floating m-2">
+            <input type="time" name="afternoonEnd" class="form-control" id="afternoonEnd" placeholder="Fermeture">
+            <label for="afternoonEnd">Fermeture</label>
+        </p>
+        
+        <button class="w-50 btn btn-lg btn-primary mt-4" type="submit">Enregister</button>
 
-        </form>
+    </form>
 
-        <h2 class="display-4 text-primary text-center">Modification des forfait d'entretient : </h2>
 
-        <form method="POST" action="index.php?page=dashboard">
+    <!-- Modification des forfaits d'entretient. -->
+    <h2 class="display-4 text-primary text-center">Modification des forfait d'entretient : </h2>
 
-            <?php if(isset($_GET['modifyService'])) {
-            echo '<p class="mt-4 fw-bold text-success">Prestation modifiée avec succès !</p>';
-            }
-            else if(isset($_GET['error']) && !empty($_GET['message'])) {
-            echo '<p class="mt-4 fw-bold text-danger">'.htmlspecialchars($_GET['message']).'</p>';
-            } 
-            ?>
+    <!-- Formlulaire de modification. -->
+    <form method="POST" action="index.php?page=dashboard">
 
-            <div class="input-group mb-3">
-                <label  class="input-group-text" for="inputGroupSelect02">Options</label>
-                <select name="service" class="form-select" id="inputGroupSelect02">
-                    <option selected>Type de prestation</option>
-                    <?php
-                        while($services = $service->fetch()) {
-                        ?>
-                            <option value="<?= $services['id']?>" ><?= $services['service_name']?></option>
+        <!-- Message de validation oub d'erreurs. -->
+        <?php if(isset($_GET['modifyService'])) {
+        echo '<p class="mt-4 fw-bold text-success">Prestation modifiée avec succès !</p>';
+        }
+        else if(isset($_GET['error']) && !empty($_GET['message'])) {
+        echo '<p class="mt-4 fw-bold text-danger">'.htmlspecialchars($_GET['message']).'</p>';
+        } 
+        ?>
 
-                        <?php }  ?>
-                </select>
-            </div>
+        <!-- Menu déroulant pour récupérer l'id du service à modifier. -->
+        <div class="input-group mb-3">
+            <label  class="input-group-text" for="inputGroupSelect02">Options</label>
+            <select name="service" class="form-select" id="inputGroupSelect02">
+                <option selected>Type de prestation</option>
+                <?php
+                    while($services = $service->fetch()) {
+                    ?>
+                        <option value="<?= $services['id']?>" ><?= $services['service_name']?></option>
 
-            <p class="form-floating m-2">
-                <input type="text" name="included" class="form-control" id="included" placeholder="Prestation">
-                <label for="included">Prestation</label>
-            </p>
+                    <?php }  ?>
+            </select>
+        </div>
 
-            <p class="form-floating m-2">
-                <input type="number" name="price" class="form-control" id="price" placeholder="Prix">
-                <label for="price">Prix</label>
-            </p>
-            
-            <button class="w-50 btn btn-lg btn-primary mt-4" type="submit">Enregister</button>
+        <!-- Service en question. -->
+        <p class="form-floating m-2">
+            <input type="text" name="included" class="form-control" id="included" placeholder="Prestation">
+            <label for="included">Prestation</label>
+        </p>
 
-        </form>
+        <p class="form-floating m-2">
+            <input type="number" name="price" class="form-control" id="price" placeholder="Prix">
+            <label for="price">Prix</label>
+        </p>
+        
+        <button class="w-50 btn btn-lg btn-primary mt-4" type="submit">Enregister</button>
+
+    </form>
 
     <?php } ?>
 
+
+    <!-- Partie reservée au employés. -->
     <?php 
         if($_SESSION['id'] > 0) { 
     ?>
 
+        <!-- Véhicules en ligne. -->
         <h2 class="pt-4 display-4 text-primary text-center">Véhicules en ligne : </h2>
 
+        <!-- Message de validation ou d'erreur. -->
         <?php if(isset($_GET['deletedCar'])) {
             echo '<p class="mt-4 fw-bold text-success">Vehicule supprimé avec succès !</p>';
             }
@@ -167,6 +187,7 @@
             } 
             ?>
 
+        <!-- tableau des véhicules. -->
         <table>
             <thead>
                 <tr>
@@ -210,10 +231,13 @@
             }
         ?>
 
+        <!-- Ajout d'un véhicule. -->
         <h2 class="display-4 text-primary text-center">Mettre un véhicule en ligne : </h2>
 
+        <!-- Formulaire d'ajout d'un véhicule. -->
         <form method="POST" action="index.php?page=dashboard" enctype="multipart/form-data">
 
+            <!-- Message de validation ou d'erreur. -->
             <?php if(isset($_GET['addNewCar'])) {
             echo '<p class="mt-4 fw-bold text-success">Nouveau véhicule ajouté avec succès !</p>';
             }
@@ -222,6 +246,7 @@
             } 
             ?>
 
+            <!-- Formulaire. -->
             <p class="form-floating m-2">
                 <input type="text" name="carBrand" class="form-control" id="carBrand" placeholder="Marque du véhicule">
                 <label for="carBrand">Marque</label>
@@ -271,10 +296,14 @@
 
         </form>
 
+
+        <!-- Témoignages clients. -->
         <h2 class="display-4 text-primary text-center">Témoignages clients : </h2>
 
+        <!-- Formulaire d'ajout d'un témoignage. -->
         <form method="POST" action="index.php?page=dashboard">
 
+            <!-- Message de validation ou d'erreur. -->
             <?php if(isset($_GET['addNewTestimonial'])) {
             echo '<p class="mt-4 fw-bold text-success">Témoignage enregistré avec succès !</p>';
             }
@@ -283,6 +312,7 @@
             } 
             ?>
 
+            <!-- Formulaire. -->
             <p class="form-floating m-2">
                 <input type="text" name="testimonialContent" class="form-control" id="testimonialContent" placeholder="Témoignage">
                 <label for="testimonialContent">Témoignage</label>
@@ -302,10 +332,12 @@
 
         </form>
 
+
+        <!-- Espace de modération des témoignages. -->
         <h2 class="display-4 text-primary text-center">Témoignages à valider : </h2>
 
         <div class="container mt-5">
-
+            <!-- Message de validation ou d'erreur -->
             <?php if(isset($_GET['deletedTestimonial'])) {
             echo '<p class="mt-4 fw-bold text-success">Témoignage supprimé avec succès !</p>';
             }
@@ -317,6 +349,7 @@
             } 
             ?>
 
+            <!-- Récupération des messages. -->
             <?php while($testimonialNotValidate = $testimonialsNotValidate->fetch()) { ?>
 
             <div class="d-flex justify-content-center">
@@ -333,6 +366,7 @@
 
     <?php } ?>
 
+    <!-- Bouton de déconnexion. -->
     <div class="container my-4 d-flex justify-content-center">
         <button type="button" href="" class="btn btn-primary me-2">
             <a class="text-decoration-none text-white" href="index.php?page=logout">Déconnexion</a>
@@ -345,9 +379,10 @@
 
 
 <?php 
-
+    // Fin de l'enregistrement du HTML.
     $content = ob_get_clean();
 
+    // Intégration à base.php.
     require('base.php');
 
 ?>

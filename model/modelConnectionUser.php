@@ -1,7 +1,7 @@
 <?php
 
+// Vérification du formulaire de connexion.
 if(!empty($_POST['email']) && !empty($_POST['password']) && empty($_SESSION)) {
-
 
     // Sécurisation des variables.
     $email     = htmlspecialchars($_POST['email']);
@@ -20,6 +20,7 @@ if(!empty($_POST['email']) && !empty($_POST['password']) && empty($_SESSION)) {
     $req = $bdd->prepare('SELECT COUNT(*) as numberEmail FROM user WHERE email = ?');
     $req->execute([$email]);
 
+    // Si l'email n'est pas reconnu.
     while($emailVerification = $req->fetch()) {
         if($emailVerification['numberEmail'] != 1) {
             header('location: index.php?error=1&message=Impossible de vous authentifier correctement.');
@@ -27,11 +28,12 @@ if(!empty($_POST['email']) && !empty($_POST['password']) && empty($_SESSION)) {
         }
     }
 
-    // Connexion.
+    // Connexion si le mot de passe est le bon.
     $req = $bdd->prepare('SELECT * FROM user WHERE email = ?');
     $req->execute([$email]);
 
     while($user = $req->fetch()) {
+        // Si le mot de passe est le bon création d'une session..
         if($password == $user['password']) {
             $_SESSION['connect'] = 1;
             $_SESSION['email']   = $user['email'];
@@ -48,10 +50,11 @@ if(!empty($_POST['email']) && !empty($_POST['password']) && empty($_SESSION)) {
                     'SameSite' => 'Strict',
                 ]);
             } 
-
+            // Validation de la connexion.
             header('location: index.php?connexion=1');
             exit();
         } else {
+            // Erreur dans lee mot de passe.
             header('location: index.php?error=1&message=Impossible de vous authentifier correctement.');
             exit();
         }

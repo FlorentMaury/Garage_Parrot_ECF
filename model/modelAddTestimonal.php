@@ -1,5 +1,6 @@
 <?php
 
+// Vérification du formulaire d'ajout des témoignages via les employés.
 if(
     !empty($_POST['testimonialContent']) && 
     !empty($_POST['customerNote']) && 
@@ -16,16 +17,18 @@ if(
     $writer             = $_SESSION['email'];
     $authorized         = 1;
 
-    // Modifier un service.
+    // Enregistrement du témoignage.
     $req = $bdd->prepare('INSERT INTO testimonials(testimonial, note, client, writer, authorized) VALUES(?, ?, ?, ?, ?)');
     $req->execute([$testimonialContent,$customerNote, $customer, $writer, $authorized]);
 
+    // Redirection.
     header('location: index.php?page=dashboard&addNewTestimonial=1');
     exit();
 
  }
 
 
+// Vérification du formulaire d'ajout des témoignages via les clients eux-mêmes.
 if(
     !empty($_POST['testimonialContentClient']) && 
     !empty($_POST['customerNoteClient']) && 
@@ -41,11 +44,12 @@ if(
     $customerNote       = htmlspecialchars($_POST['customerNoteClient']);
     $authorized         = 0;
 
-    // Modifier un service.
+    // Enregistrement du témoignage mais en attente de validation du garage.
     $req = $bdd->prepare('INSERT INTO testimonials(testimonial, note, client, authorized) VALUES(?, ?, ?, ?)');
     $req->execute([$testimonialContent,$customerNote, $customer, $authorized]);
 
-    header('location: index.php?page=home&addNewTestimonial=1');
+    // Redirection
+    header('location: index.php?page=home&addNewTestimonialClient=1');
     exit();
 
  }

@@ -1,5 +1,6 @@
 <?php
 
+// Vérification du formulaire de modification du planning.
 if(
     !empty($_POST['schedule']) 
     ) {
@@ -19,15 +20,16 @@ if(
     $r->execute([$dayId]);
     $dayName = $r->fetchColumn();
 
-    // Modifier un jour.
-if($morningStart == null) {
-    $morningStart = 'Fermé';
-}
+    // Remplacer une date vide par une information de fermeture du garage.
+    if($morningStart == null) {
+        $morningStart = 'Fermé';
+    }
 
+    // Modification un jour dans la base de données.
     $req = $bdd->prepare('UPDATE schedule SET day = ?, morning_start = ?, morning_end = ?, afternoon_start = ? , afternoon_end = ? WHERE id = ?');
     $req->execute([$dayName, $morningStart, $morningEnd, $afternoonStart, $afternoonEnd, $dayId]);
 
-   
+    // Redirection.
     header('location: index.php?page=dashboard&modifySchedule=1');
     exit();
 

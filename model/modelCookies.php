@@ -15,7 +15,7 @@
 
         while($user = $req->fetch()) {
             if($user['secretNumber'] == 1) {
-                // Lire ce qui concerne l'utilisateur
+                // Lire ce qui concerne l'utilisateur.
                 $informations = $bdd->prepare('SELECT * FROM user WHERE secret = ?');
                 $informations->execute([$secret]);
 

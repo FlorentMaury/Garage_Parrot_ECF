@@ -9,7 +9,7 @@
 
 <!-- TEMOIGNAGES -->
 
-<div class="container mt-5 my-4">
+<div class="mt-5 my-4">
     <h2 class="pt-5 display-4 text-primary text-center" id="cars">Ils parlent de nous</h2>
 
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
@@ -43,7 +43,7 @@
 
 <!-- LES VOITURES -->
 
-<div class="container d-flex justify-content-between">
+<div class="d-flex justify-content-between">
     <div class="list-group w-25">
         <h3>Prix</h3>
         <input type="hidden" id="hidden_minimum_price" value="0" />
@@ -69,39 +69,13 @@
     </div>                
 </div>
 
-<div class="col-md-9">
-    <div class="row filter_data">
-    </div>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 my-4 filter_data">
 </div>
 
-<div class="container">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 my-4">
 
         <?php
             while($car = $cars->fetch()) {
         ?>
-
-        <div class="col">
-            <div class="card shadow-sm w-100 h-100" >                        
-                <img src="<?= './public/assets/cars/'.$car['car_img_face'] ?>" alt="Photo voiture" class="card-img-top">
-                <div class="card-body">
-                    <h5 class="card-title"><?= $car['car_brand'] ?></h5>
-                    <h6 class="card-subtitle text-muted"><?= $car['car_type'] ?></h6>
-                    <p class="card-text">
-                        <ul>
-                            <li><?= $car['car_km'] ?> Km</li>
-                            <li><?= $car['car_year'] ?></li>
-                            <li><?= $car['car_price'] ?> €</li>
-                        </ul>
-                        <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#more<?= $car['id'] ?>">Détails</button>
-                        <?php if(isset($_SESSION['connect'])) { ?>
-                            <a href="index.php?page=home" class="btn btn-outline-danger">Supprimer</a>
-                        <?php } ?>
-                    </p>
-                </div>
-
-            </div>
-        </div>
 
         <!-- Modale -->
 
@@ -178,8 +152,16 @@
                     <!-- Pied-de-page de la modale -->
                     <div class="modal-footer">
 
-
+                        <?php if(isset($_SESSION['connect'])) { ?>
+                            <a 
+                            href='./model/modelDeleteCar.php?id=<?=$car["id"]?>' 
+                            type="button" 
+                            class="btn btn-info">
+                            Supprimer
+                        </a>
+                        <?php } ?>
                         <button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Fermer</button>
+
                     </div>
                 </div>
             </div>
@@ -189,8 +171,6 @@
             }
         ?>
 
-    </div>
-</div>
 
 <!-- LES SERVICES -->
 
@@ -232,7 +212,7 @@
 
 <!-- FORMULAIRE DE CONTACT -->
 <div class="d-flex flex-column flex-md-row">
-<div class="container">
+
     <h2 id="contact" class="display-4 text-primary text-center">Nous contacter</h2>
 
     <div class="col-lg-6 mx-auto my-1 p-3">
@@ -266,7 +246,7 @@
         </form>
     <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5"></div>
     <div class="overflow-hidden" style="max-height: 30vh;"></div>
-</div>
+
 </div>
 
 <!-- Témoignages -->
@@ -305,6 +285,11 @@
     </form>
 </div>
 
+</div>
+
+<div class="container my-4">
+    <h2 id="about" class="display-4 text-primary text-center">À propos</h2>
+<p>À propos</p>
 </div>
 
 

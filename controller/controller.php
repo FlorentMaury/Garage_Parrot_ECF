@@ -1,25 +1,30 @@
 <?php
 
-function home() {
-    require('model/modelConnectionDB.php');
-    require('model/modelFilterCars.php');
+    // Gestion des contenus dans chacunes des pages.
     
-    require('view/homeView.php');
-};
+    // Dans la page d'accueil.
+    function home() {
+        require('model/modelConnectionDB.php');
+        require('model/modelFilterCars.php');
+        
+        require('view/homeView.php');
+    };
 
-function dashboard() {
-    require('model/modelNewUser.php');
-    require('model/modelSetServices.php');
-    require('model/modelSetSchedule.php');
-    require('model/modelAddCar.php');
-    require('model/modelAddTestimonal.php');
+    // Dans le tableau de bord, pour les employés.
+    function dashboard() {
+        require('model/modelNewUser.php');
+        require('model/modelSetServices.php');
+        require('model/modelSetSchedule.php');
+        require('model/modelAddCar.php');
+        require('model/modelAddTestimonal.php');
 
-    require('view/dashboardView.php');
-    
-};
+        require('view/dashboardView.php');
+        
+    };
 
-function logOut() {
-    require('model/modelLogout.php');
-};
+    // Dans la fonction de déconnexion.
+    function logOut() {
+        require('model/modelLogout.php');
+    };
 
 ?>
