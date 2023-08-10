@@ -12,6 +12,15 @@
 
 <div class="mt-5 my-4">
 
+    <!-- Message de validation ou d'erreur -->
+    <?php if(isset($_GET['logout'])) {
+    echo '<p class="mt-5 fw-bold text-success">Vous êtes mainetant déconnecté !</p>';
+    }
+    else if(isset($_GET['error']) && !empty($_GET['message'])) {
+    echo '<p class="mt-5 fw-bold text-danger">'.htmlspecialchars($_GET['message']).'</p>';
+    }
+    ?>
+
     <!-- Présentation des témoignages clients. -->
     <h2 class="pt-5 display-4 text-primary text-center" id="testimony">Ils parlent de nous</h2>
 
@@ -51,9 +60,9 @@
 <h2 class="pt-5 display-4 text-primary text-center" id="cars">Nos véhicules</h2>
 
 <!-- Outils de filtre des véhicules. -->
+<div class="d-flex flex-column align-items-center justify-content-md-between flex-md-row">
 
-<!-- Outil de filtre 'prix'. -->
-<div class="d-flex justify-content-between">
+    <!-- Outil de filtre 'prix'. -->
     <div class="list-group w-25">
         <h3>Prix</h3>
         <input type="hidden" id="hidden_minimum_price" value="0" />
@@ -78,7 +87,8 @@
         <input type="hidden" id="hidden_maximum_year" value="2023" />
         <p id="year_show">1980 - 2023</p>
         <div id="year_range"></div>
-    </div>                
+    </div> 
+
 </div>
 
 <!-- Présentation des véhicules via 'modelFilterCars'. -->
@@ -231,6 +241,7 @@
 <!-- Formulaire de contact général. -->
 <div class="d-flex flex-column flex-md-row">
 
+<div class="container">
     <h2 id="contact" class="display-4 text-primary text-center">Nous contacter</h2>
 
     <div class="col-lg-6 mx-auto my-1 p-3">
@@ -263,9 +274,7 @@
         <button class="w-50 btn btn-lg btn-primary mt-4" type="submit">Enregister</button>
 
         </form>
-    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5"></div>
-    <div class="overflow-hidden" style="max-height: 30vh;"></div>
-
+    </div>
 </div>
 
 <!-- Formualire de témoignages pour les clients. -->
@@ -310,7 +319,16 @@
 <!-- Section à propos du garage. -->
 <div class="container my-4">
     <h2 id="about" class="display-4 text-primary text-center">À propos</h2>
-<p>À propos</p>
+    <p>
+        Vincent Parrot, fort de ses 15 années d'expérience dans la réparation automobile, a ouvert
+        son propre garage à Toulouse en 2021.
+        Depuis 2 ans, il propose une large gamme de services: réparation de la carrosserie et de la
+        mécanique des voitures ainsi que leur entretien régulier pour garantir leur performance et
+        leur sécurité. De plus, le Garage V. Parrot met en vente des véhicules d'occasion afin
+        d'accroître son chiffre d'affaires.
+        Vincent Parrot considère son atelier comme un véritable lieu de confiance pour ses clients et
+        leurs voitures doivent, selon lui, à tout prix être entre de bonnes mains.
+    </p>
 </div>
 
 

@@ -16,10 +16,10 @@
     if($_SESSION['id'] == 0) { 
     ?>
 
-    <h2 class="pt-4 display-4 text-primary text-center">Nouveau collaborateur</h2>
+    <h2 class="pt-5 display-4 text-primary text-center">Nouveau collaborateur</h2>
 
     <!-- Formulaire d'enregistrement d'un nouvel employé. -->
-    <form method="POST" action="index.php?page=dashboard">
+    <form class="d-flex flex-column" method="POST" action="index.php?page=dashboard">
 
         <!-- Messages de succès ou d'erreur, le cas échéant. -->
         <?php if(isset($_GET['success'])) {
@@ -46,33 +46,44 @@
             <label for="passwordTwo">Confirmez le mot de passe</label>
         </p>
         
-        <button class="w-50 btn btn-lg btn-primary mt-4" type="submit">Enregister</button>
+        <button class="w-50 btn btn-lg btn-primary mt-4 align-self-center" type="submit">Enregister</button>
 
     </form>
 
         <!-- Liste des employés. -->
-    <h2 class="display-4 text-primary text-center">Liste des employés : </h2>
+    <h2 class="mt-5 display-4 text-primary text-center">Liste des employés : </h2>
 
     <?php
+
+    if(isset($_GET['deletedUser'])) {
+        echo '<p class="mt-4 fw-bold text-success">Utilisateur supprimé avec succès !</p>';
+        }
+        else if(isset($_GET['error']) && !empty($_GET['message'])) {
+        echo '<p class="mt-4 fw-bold text-danger">'.htmlspecialchars($_GET['message']).'</p>';
+        } 
+
     require('./model/modelConnectionDB.php');
 
-    while($utilisateur = $users->fetch()) {
+    while($user = $users->fetch()) {
     ?>
         <p>
-            <?= $utilisateur['email'] ?>
-            <button class="btn btn-dark">
-                <?= $utilisateur['id'] ?>
-            </button>
+            <?= $user['email'] ?>
+                <a 
+                    href='./model/modelDeleteUser.php?id=<?=$user["id"]?>' 
+                    type="button" 
+                    class="btn btn-info">
+                    <img class="w-50" src="./public/assets/multiplier.png" alt="Image de suppression">
+                </a>
         </p>
     <?php
     }
     ?>
 
     <!-- Horaires du garage pour modification. -->
-    <h2 class="display-4 text-primary text-center">Horaires du garage : </h2>
+    <h2 class="mt-5 display-4 text-primary text-center">Horaires du garage : </h2>
 
     <!-- Formulaire de modification. -->
-    <form method="POST" action="index.php?page=dashboard">
+    <form class="d-flex flex-column" method="POST" action="index.php?page=dashboard">
 
         <!-- Message de validation ou d'erreur. -->
         <?php if(isset($_GET['modifySchedule'])) {
@@ -118,16 +129,16 @@
             <label for="afternoonEnd">Fermeture</label>
         </p>
         
-        <button class="w-50 btn btn-lg btn-primary mt-4" type="submit">Enregister</button>
+        <button class="w-50 btn btn-lg btn-primary mt-4 align-self-center" type="submit">Enregister</button>
 
     </form>
 
 
     <!-- Modification des forfaits d'entretient. -->
-    <h2 class="display-4 text-primary text-center">Modification des forfait d'entretient : </h2>
+    <h2 class="mt-5 display-4 text-primary text-center">Modification des forfait d'entretient : </h2>
 
     <!-- Formlulaire de modification. -->
-    <form method="POST" action="index.php?page=dashboard">
+    <form class="d-flex flex-column" method="POST" action="index.php?page=dashboard">
 
         <!-- Message de validation oub d'erreurs. -->
         <?php if(isset($_GET['modifyService'])) {
@@ -163,7 +174,7 @@
             <label for="price">Prix</label>
         </p>
         
-        <button class="w-50 btn btn-lg btn-primary mt-4" type="submit">Enregister</button>
+        <button class="w-50 btn btn-lg btn-primary mt-4 align-self-center" type="submit">Enregister</button>
 
     </form>
 
@@ -176,7 +187,7 @@
     ?>
 
         <!-- Véhicules en ligne. -->
-        <h2 class="pt-4 display-4 text-primary text-center">Véhicules en ligne : </h2>
+        <h2 class="pt-5 display-4 text-primary text-center">Véhicules en ligne : </h2>
 
         <!-- Message de validation ou d'erreur. -->
         <?php if(isset($_GET['deletedCar'])) {
@@ -191,13 +202,13 @@
         <table>
             <thead>
                 <tr>
-                    <th>Marque</th>
-                    <th>Modèle</th>
-                    <th>Kilomètrage</th>
-                    <th>Prix</th>
-                    <th>Année</th>
-                    <th>Description</th>
-                    <th>Supprimer</th>
+                    <th class="px-2">Marque</th>
+                    <th class="px-2">Modèle</th>
+                    <th class="px-2">Kilomètrage</th>
+                    <th class="px-2">Prix</th>
+                    <th class="px-2">Année</th>
+                    <th class="px-2">Description</th>
+                    <th class="px-2">Supprimer</th>
                 </tr>
             </thead>
 
@@ -208,18 +219,18 @@
 
             <tbody>
                 <tr>
-                    <td><?= $car['car_brand'] ?></td>
-                    <td><?= $car['car_type'] ?></td>
-                    <td><?= $car['car_km'] ?></td>
-                    <td><?= $car['car_price'] ?></td>
-                    <td><?= $car['car_year'] ?></td>
-                    <td><?= $car['car_desc'] ?></td>
-                    <td>
+                    <td class="px-2"><?= $car['car_brand'] ?></td>
+                    <td class="px-2"><?= $car['car_type'] ?></td>
+                    <td class="px-2"><?= $car['car_km'] ?></td>
+                    <td class="px-2"><?= $car['car_price'] ?></td>
+                    <td class="px-2"><?= $car['car_year'] ?></td>
+                    <td class="px-2"><?= $car['car_desc'] ?></td>
+                    <td class="px-2">
                         <a 
                             href='./model/modelDeleteCar.php?id=<?=$car["id"]?>' 
                             type="button" 
                             class="btn btn-info">
-                            X
+                            <img class="w-75" src="./public/assets/multiplier.png" alt="Image de suppression">
                         </a>
                     </td>
                 </tr>
@@ -232,10 +243,10 @@
         ?>
 
         <!-- Ajout d'un véhicule. -->
-        <h2 class="display-4 text-primary text-center">Mettre un véhicule en ligne : </h2>
+        <h2 class="display-4 text-primary text-center mt-5">Mettre un véhicule en ligne : </h2>
 
         <!-- Formulaire d'ajout d'un véhicule. -->
-        <form method="POST" action="index.php?page=dashboard" enctype="multipart/form-data">
+        <form class="d-flex flex-column"  method="POST" action="index.php?page=dashboard" enctype="multipart/form-data">
 
             <!-- Message de validation ou d'erreur. -->
             <?php if(isset($_GET['addNewCar'])) {
@@ -292,16 +303,16 @@
                 <label for="carImg3">Interieur du véhicule</label>
             </p>
 
-            <button class="w-50 btn btn-lg btn-primary mt-4" type="submit">Enregister</button>
+            <button class="w-50 btn btn-lg btn-primary mt-4 align-self-center" type="submit">Enregister</button>
 
         </form>
 
 
         <!-- Témoignages clients. -->
-        <h2 class="display-4 text-primary text-center">Témoignages clients : </h2>
+        <h2 class="display-4 text-primary text-center mt-5">Témoignages clients : </h2>
 
         <!-- Formulaire d'ajout d'un témoignage. -->
-        <form method="POST" action="index.php?page=dashboard">
+        <form class="d-flex flex-column" method="POST" action="index.php?page=dashboard">
 
             <!-- Message de validation ou d'erreur. -->
             <?php if(isset($_GET['addNewTestimonial'])) {
@@ -328,13 +339,13 @@
                 <label for="customerNote">Note du client</label>
             </p>
 
-            <button class="w-50 btn btn-lg btn-primary mt-4" type="submit">Enregister</button>
+            <button class="w-50 btn btn-lg btn-primary mt-4 align-self-center" type="submit">Enregister</button>
 
         </form>
 
 
         <!-- Espace de modération des témoignages. -->
-        <h2 class="display-4 text-primary text-center">Témoignages à valider : </h2>
+        <h2 class="display-4 text-primary text-center mt-5">Témoignages à valider : </h2>
 
         <div class="container mt-5">
             <!-- Message de validation ou d'erreur -->
@@ -352,12 +363,20 @@
             <!-- Récupération des messages. -->
             <?php while($testimonialNotValidate = $testimonialsNotValidate->fetch()) { ?>
 
-            <div class="d-flex justify-content-center">
+            <div class="mb-5 d-flex justify-content-center">
                 <p>"<?= $testimonialNotValidate['testimonial'] ?>"</p>
                 <p>— <cite><?= $testimonialNotValidate['client'] ?></cite> —</p>
                 <p><?= $testimonialNotValidate['note'] ?>/5</p>
-                <a href='./model/modelValidateTestimonial.php?id=<?=$testimonialNotValidate["id"]?>' class="btn btn-success">V</a>
-                <a href='./model/modelDeleteTestimonial.php?id=<?=$testimonialNotValidate["id"]?>' class="btn btn-info">X</a>
+                <a 
+                    href='./model/modelValidateTestimonial.php?id=<?=$testimonialNotValidate["id"]?>' 
+                    class="btn btn-success mx-2">
+                    <img class="" src="./public/assets/check.png" alt="Image de validation">                
+                </a>
+                <a 
+                    href='./model/modelDeleteTestimonial.php?id=<?=$testimonialNotValidate["id"]?>' 
+                    class="btn btn-info mx-2">
+                    <img class="w-75" src="./public/assets/multiplier.png" alt="Image de suppression">
+                </a>
             </div>
 
             <?php } ?>
@@ -367,9 +386,9 @@
     <?php } ?>
 
     <!-- Bouton de déconnexion. -->
-    <div class="container my-4 d-flex justify-content-center">
+    <div class="container my-4 d-flex justify-content-end">
         <button type="button" href="" class="btn btn-primary me-2">
-            <a class="text-decoration-none text-white" href="index.php?page=logout">Déconnexion</a>
+            <a class="text-decoration-none text-white p-5" href="index.php?page=logout">Déconnexion</a>
         </button>
     </div>
 
