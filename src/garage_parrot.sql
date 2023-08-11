@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 11 août 2023 à 11:35
+-- Généré le : ven. 11 août 2023 à 11:59
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 8.1.2
 
@@ -126,7 +126,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `email`, `password`, `secret`, `creation_date`) VALUES
-(0, 'contact@vparrot.fr', 'bx14252392bd4a5098bf6f9c162df0faff9c00c3f29123', '989d26c5f19b7738bf2ad370d0d5c085c85553301689079323', 2147483647);
+(0, 'contact@vparrot.fr', 'bx14252392bd4a5098bf6f9c162df0faff9c00c3f29123', '989d26c5f19b7738bf2ad370d0d5c085c85553301689079323', 2147483647),
+(15, 'e@e.ee', 'bx11a972a77c3c16357800e04a24aa8798e45ed0169123', '8c022f01a513c1282cab1e912daa62fb33ed15651691747381', 2147483647);
 
 --
 -- Index pour les tables déchargées
@@ -170,7 +171,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `cars`
 --
 ALTER TABLE `cars`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT pour la table `schedule`
@@ -188,13 +189,13 @@ ALTER TABLE `service`
 -- AUTO_INCREMENT pour la table `testimonials`
 --
 ALTER TABLE `testimonials`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=0;
 
 --
 -- AUTO_INCREMENT pour la table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
