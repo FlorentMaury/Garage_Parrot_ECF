@@ -66,8 +66,8 @@
     <div class="list-group w-25">
         <h3>Prix</h3>
         <input type="hidden" id="hidden_minimum_price" value="0" />
-        <input type="hidden" id="hidden_maximum_price" value="65000" />
-        <p id="price_show">10 - 5000</p>
+        <input type="hidden" id="hidden_maximum_price" value="30000" />
+        <p id="price_show">0 - 30000</p>
         <div id="price_range"></div>
     </div>    
 
@@ -75,8 +75,8 @@
     <div class="list-group w-25">
         <h3>Kilométrage</h3>
         <input type="hidden" id="hidden_minimum_km" value="0" />
-        <input type="hidden" id="hidden_maximum_km" value="500000" />
-        <p id="km_show">0 - 500000</p>
+        <input type="hidden" id="hidden_maximum_km" value="50000" />
+        <p id="km_show">0 - 50000</p>
         <div id="km_range"></div>
     </div>     
 

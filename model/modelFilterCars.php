@@ -13,7 +13,6 @@ if(isset($_POST["action"])) {
     if(isset($_POST["minimum_price"], $_POST["maximum_price"]) && !empty($_POST["minimum_price"]) && !empty($_POST["maximum_price"])) {
         // Concaténation de la requête générale avec le filtre de prix.
         $query .= " AND car_price BETWEEN ".$_POST["minimum_price"]." AND ".$_POST["maximum_price"]." ";
-        print_r($query);
     }
 
     // Filtrage en fonction du kilométrage.
@@ -27,7 +26,6 @@ if(isset($_POST["action"])) {
     if(isset($_POST["minimum_year"], $_POST["maximum_year"]) && !empty($_POST["minimum_year"]) && !empty($_POST["maximum_year"])) {
         // Concaténation de la requête générale avec le filtre de l'année.
         $query .= " AND car_year BETWEEN ".$_POST["minimum_year"]." AND ".$_POST["maximum_year"]." ";
-        print_r($query);
     }
         
     // Récuperation de la requête finale.

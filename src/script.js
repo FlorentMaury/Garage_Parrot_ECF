@@ -3,7 +3,8 @@ $(document).ready(function () {
     filter_data();
 
     function filter_data() {
-        $('.filter_data').html('<div>Loading</div>');
+        $('.filter_data').html('<div class="loader">Chargement...</div>');
+
         var action = 'fetch_data';
         var minimum_price = $('#hidden_minimum_price').val();
         var maximum_price = $('#hidden_maximum_price').val();
@@ -13,8 +14,8 @@ $(document).ready(function () {
 
         var minimum_km = $('#hidden_minimum_km').val();
         var maximum_km = $('#hidden_maximum_km').val();
-        $.ajax({
 
+        $.ajax({
 
             url: "./model/modelFilterCars.php",
             method: "POST",
@@ -65,9 +66,9 @@ $(document).ready(function () {
     $('#km_range').slider({
         range: true,
         min: 0,
-        max: 500000,
-        values: [0, 500000],
-        step: 10000,
+        max: 50000,
+        values: [0, 50000],
+        step: 1000,
         stop: function (event, ui) {
             $('#km_show').html(ui.values[0] + ' - ' + ui.values[1]);
             $('#hidden_minimum_km').val(ui.values[0]);
