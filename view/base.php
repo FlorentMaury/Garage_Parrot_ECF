@@ -62,12 +62,15 @@
         </header>
 
         <!-- Lien de retour en haut de page. -->
-        <a href="#" style="
-            position: fixed;
-            width: 3vw;
-            height: 5vh;
-            bottom: 50px;
-            right: 30px;"
+        <a 
+            class="rounded-circle d-flex justify-content-center shadow-sm"
+            href="#" 
+            style="
+                position: fixed;
+                width: 3vw;
+                height: 5vh;
+                bottom: 50px;
+                right: 30px;"
         >
         <img src="./public/assets/up.png" alt="Retour haut de page">
         </a>

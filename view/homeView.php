@@ -319,16 +319,47 @@
 <!-- Section à propos du garage. -->
 <div class="container my-4">
     <h2 id="about" class="display-4 text-primary text-center">À propos</h2>
-    <p>
-        Vincent Parrot, fort de ses 15 années d'expérience dans la réparation automobile, a ouvert
-        son propre garage à Toulouse en 2021.
-        Depuis 2 ans, il propose une large gamme de services: réparation de la carrosserie et de la
-        mécanique des voitures ainsi que leur entretien régulier pour garantir leur performance et
-        leur sécurité. De plus, le Garage V. Parrot met en vente des véhicules d'occasion afin
-        d'accroître son chiffre d'affaires.
-        Vincent Parrot considère son atelier comme un véritable lieu de confiance pour ses clients et
-        leurs voitures doivent, selon lui, à tout prix être entre de bonnes mains.
-    </p>
+    <div>
+        <h4>Bienvenue chez Vincent Parrot Garage Automobile !</h4>
+
+        <p>
+            Fondé en 2021 par Vincent Parrot, notre garage automobile à Toulouse est le fruit de 15 années d'expérience solide et passionnée dans le domaine de la réparation automobile. 
+            Fortement investi dans le monde de l'automobile depuis ses débuts, Vincent Parrot a décidé de concrétiser son rêve en établissant son propre garage, dédié à offrir des services de réparation et d'entretien exceptionnels.
+        </p>
+
+        <p>Notre Mission :</p>
+
+        <p>
+            Chez Vincent Parrot Garage Automobile, notre mission est claire : fournir à nos clients des services de réparation automobile de la plus haute qualité, 
+            combinés à un service clientèle exceptionnel. Nous comprenons que la confiance de nos clients repose sur notre expertise et notre engagement envers l'excellence. 
+            Chaque membre de notre équipe partage cette vision et s'efforce de fournir des solutions fiables et efficaces pour tous les besoins en matière de réparation et d'entretien automobile.
+        </p>
+
+        <p>Notre Approche :</p>
+
+        <p>
+            Nous croyons en une approche transparente et personnalisée envers chaque véhicule qui entre dans notre garage. 
+            Chaque problème est examiné en détail, expliqué clairement au client et résolu de manière professionnelle. 
+            Notre équipe de techniciens qualifiés et expérimentés utilise les derniers équipements et techniques pour assurer que votre voiture reçoive les meilleurs soins possibles.
+        </p>
+
+        <p>Pourquoi Nous Choisir :</p>
+
+        <ul>
+            <li>Expertise : Avec plus d'une décennie d'expérience, Vincent Parrot est un nom de confiance dans le domaine de la réparation automobile.</li>
+            <li>Qualité : Nous nous engageons à fournir des services de la plus haute qualité pour garantir la sécurité et la performance de votre véhicule.</li>
+            <li>Service Clientèle : Votre satisfaction est notre priorité absolue. Notre équipe amicale est là pour répondre à vos questions et vous assister à chaque étape.</li>
+            <li>Transparence : Nous croyons en une communication ouverte et honnête. Vous serez informé de toutes les étapes du processus de réparation.</li>
+        </ul>
+
+        <p>
+            Nous sommes fiers de servir la communauté automobile de Toulouse et de ses environs. 
+            Merci de nous faire confiance pour prendre soin de votre voiture. 
+            N'hésitez pas à nous contacter pour toutes vos questions ou besoins en matière de réparation et d'entretien automobile.
+        </p>
+
+        <p>L'équipe de Vincent Parrot Garage Automobile</p>
+</div>
 </div>
 
 
