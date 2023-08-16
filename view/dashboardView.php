@@ -62,22 +62,36 @@
         echo '<p class="mt-4 fw-bold text-danger">'.htmlspecialchars($_GET['message']).'</p>';
         } 
 
-    require('./model/modelConnectionDB.php');
-
-    while($user = $users->fetch()) {
     ?>
-        <p>
-            <?= $user['email'] ?>
-                <a 
-                    href='./model/modelDeleteUser.php?id=<?=$user["id"]?>' 
-                    type="button" 
-                    class="btn btn-info">
-                    <img class="w-50" src="./public/assets/multiplier.png" alt="Image de suppression">
-                </a>
-        </p>
-    <?php
-    }
-    ?>
+    
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <th>email</th>
+                <th>supprimer</th>
+            </thead>
+            <tbody>
+                <?php
+                    require('./model/modelConnectionDB.php');
+                    while($user = $users->fetch()) {
+                ?>
+                <tr>
+                    <td><?= $user['email'] ?></td>
+                    <td>
+                        <a 
+                        href='./model/modelDeleteUser.php?id=<?=$user["id"]?>' 
+                        type="button" 
+                        class="btn btn-info">
+                            <img class="w-50" src="./public/assets/multiplier.png" alt="Image de suppression">
+                        </a>
+                    </td>
+                </tr>
+                <?php
+                    }
+                ?>
+            </tbody>
+        </table>
+    </div>
 
     <!-- Horaires du garage pour modification. -->
     <h2 class="mt-5 display-4 text-primary text-center">Horaires du garage : </h2>

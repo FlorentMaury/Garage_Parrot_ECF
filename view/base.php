@@ -116,22 +116,22 @@
                         <tbody>
                             <tr>
 
-                            <?php
-                                require('./model/modelConnectionDB.php');
-                                while($time = $schedule->fetch()) {
-                            ?>
+                                <?php
+                                    require('./model/modelConnectionDB.php');
+                                    while($time = $schedule->fetch()) {
+                                ?>
 
-                            <td><p><?= $time['day'] ?></p></td>
-                            <td><p><?= $time['morning_start'].' -' ?></p></td>
-                            <td><p><?= $time['morning_end'] ?></p></td>
-                            <td><p><?= $time['afternoon_start'].' -' ?></p></td>
-                            <td><p><?= $time['afternoon_end'] ?></p></td>
+                                <td><p><?= $time['day'] ?></p></td>
+                                <td><p><?= $time['morning_start'].' -' ?></p></td>
+                                <td><p><?= $time['morning_end'] ?></p></td>
+                                <td><p><?= $time['afternoon_start'].' -' ?></p></td>
+                                <td><p><?= $time['afternoon_end'] ?></p></td>
+                            </tr>
                         </tbody>
 
                             <?php
                                 }
                             ?>
-                            </tr>
                     </table>
                 </div>
             </div>
