@@ -9,14 +9,14 @@
 
 ?>
 
-<div class="container mt-5">
+<div class="container">
 
     <!-- Contenu réservé au patron du garage. -->
     <?php 
     if($_SESSION['id'] == 0) { 
     ?>
 
-    <h2 class="pt-5 display-4 text-primary text-center">Nouveau collaborateur</h2>
+    <h2 class="display-4 text-primary text-center">Nouveau collaborateur</h2>
 
     <!-- Formulaire d'enregistrement d'un nouvel employé. -->
     <form class="d-flex flex-column" method="POST" action="index.php?page=dashboard">
@@ -187,7 +187,7 @@
     ?>
 
         <!-- Véhicules en ligne. -->
-        <h2 class="pt-5 display-4 text-primary text-center">Véhicules en ligne : </h2>
+        <h2 class="display-4 text-primary text-center">Véhicules en ligne : </h2>
 
         <!-- Message de validation ou d'erreur. -->
         <?php if(isset($_GET['deletedCar'])) {

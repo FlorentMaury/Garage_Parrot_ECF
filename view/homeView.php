@@ -10,19 +10,19 @@
 
 <!-- TEMOIGNAGES -->
 
-<div class="mt-5 my-4">
+<div class="my-5">
 
     <!-- Message de validation ou d'erreur -->
     <?php if(isset($_GET['logout'])) {
-    echo '<p class="mt-5 pt-5 fw-bold text-success">Vous êtes mainetant déconnecté !</p>';
+    echo '<p class="mt-4 fw-bold text-success">Vous êtes maintenant déconnecté !</p>';
     }
     else if(isset($_GET['error']) && !empty($_GET['message'])) {
-    echo '<p class="mt-5 fw-bold text-danger">'.htmlspecialchars($_GET['message']).'</p>';
+    echo '<p class="mt-4 fw-bold text-danger">'.htmlspecialchars($_GET['message']).'</p>';
     }
     ?>
 
     <!-- Présentation des témoignages clients. -->
-    <h2 class="pt-5 display-4 text-primary text-center" id="testimony">Ils parlent de nous</h2>
+    <h2 class="display-4 text-primary text-center" id="testimony">Ils parlent de nous</h2>
 
     <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 

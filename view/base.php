@@ -75,20 +75,19 @@
         <img src="./public/assets/up.png" alt="Retour haut de page">
         </a>
 
-
-        <!-- Message de validation de la connexion utilisateur. -->
-        <?php
-            if(isset($_GET['connexion'])) {
-                echo '<div class=\'container\'><p class="mt-5 pt-5 fw-bold text-success">Connexion réalisée avec succès.</p></div>';
-            }
-            else if(isset($_GET['error']) && !empty($_GET['message'])) {
-                echo '<div class=\'container\'><p class="mt-4 fw-bold text-error">'.htmlspecialchars($_GET['message']).'</p></div>';
-            } 
-        ?>
-
         <!-- Contenu des pages. -->
 
-        <main class="container pt-5">
+        <main class="container" style="padding-top: 170px;">
+        
+            <!-- Message de validation de la connexion utilisateur. -->
+            <?php
+                if(isset($_GET['connexion'])) {
+                    echo '<div class=\'container\'><p class="mt-3 fw-bold text-success">Connexion réalisée avec succès.</p></div>';
+                }
+                else if(isset($_GET['error']) && !empty($_GET['message'])) {
+                    echo '<div class=\'container\'><p class="mt-3 fw-bold text-error">'.htmlspecialchars($_GET['message']).'</p></div>';
+                } 
+            ?>
 
             <?= $content ?>
 
