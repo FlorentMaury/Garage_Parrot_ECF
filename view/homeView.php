@@ -75,8 +75,8 @@
     <div class="list-group w-25">
         <h3>Kilométrage</h3>
         <input type="hidden" id="hidden_minimum_km" value="0" />
-        <input type="hidden" id="hidden_maximum_km" value="50000" />
-        <p id="km_show">0 - 50000</p>
+        <input type="hidden" id="hidden_maximum_km" value="300000" />
+        <p id="km_show">0 - 300000</p>
         <div id="km_range"></div>
     </div>     
 

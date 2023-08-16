@@ -8,7 +8,7 @@
         <link rel="shortcut icon" href="./public/assets/favicon.ico" type="image/x-icon">
         <meta name="description" content="Garage Parrot 15 ans d'expérience à votre service.">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <link rel="stylesheet" href="./design/defaut.css">
         <title><?= $title ?> | Garage V. Parrot</title>
     </head>

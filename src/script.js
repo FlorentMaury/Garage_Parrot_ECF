@@ -66,8 +66,8 @@ $(document).ready(function () {
     $('#km_range').slider({
         range: true,
         min: 0,
-        max: 50000,
-        values: [0, 50000],
+        max: 300000,
+        values: [0, 300000],
         step: 1000,
         stop: function (event, ui) {
             $('#km_show').html(ui.values[0] + ' - ' + ui.values[1]);
