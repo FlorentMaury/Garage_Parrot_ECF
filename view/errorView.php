@@ -7,9 +7,9 @@
     ob_start();
 ?>
 
-    <div class="container">
+    <div class="container mt-5">
 
-        <h1>Oups...</h1>
+        <h1 class="py-4">Oups...</h1>
 
         <p><?= $error ?></p>
 
