@@ -108,7 +108,7 @@
 
             <!-- Titre de la modale. -->
             <div class="modal-header text-primary">
-                <h5 class="modal-title"><?= $car['car_brand'].' ' ?><?= $car['car_type'] ?></h5>
+                <h4 class="modal-title"><?= $car['car_brand'].' ' ?><?= $car['car_type'] ?></h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
 
@@ -142,6 +142,7 @@
                 <p class="m-4"><?= $car['car_price'] ?> €</p>
                 <p class="m-4"><?= $car['car_km'] ?> km</p>
 
+                <h4 class="text-primary">En savoir plus sur ce véhicule</h4>
                 <!-- Formulaire de demande de contact pour un véhicule en particulier.  -->
                 <form method="POST" action="index.php?page=home&car=<?= $car['id'] ?>">
 
