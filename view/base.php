@@ -20,7 +20,7 @@
                 <div class="container">
                     <div class="navbar-brand">
                         <img src="./public/assets/logouni.png" alt="logo">
-                        GARAGE V. PARROT
+                        <p class="d-none d-md-block">GARAGE V. PARROT</p>
                     </div>
                     <!-- Le bouton s'affichera sur les petits écrans. -->
                     <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#smallNav">
@@ -79,7 +79,7 @@
         <!-- Message de validation de la connexion utilisateur. -->
         <?php
             if(isset($_GET['connexion'])) {
-                echo '<div class=\'container\'><p class="mt-4 fw-bold text-success">Connexion réalisée avec succès.</p></div>';
+                echo '<div class=\'container\'><p class="mt-5 pt-5 fw-bold text-success">Connexion réalisée avec succès.</p></div>';
             }
             else if(isset($_GET['error']) && !empty($_GET['message'])) {
                 echo '<div class=\'container\'><p class="mt-4 fw-bold text-error">'.htmlspecialchars($_GET['message']).'</p></div>';
@@ -103,7 +103,8 @@
 
                 <!-- Horaires. -->
                 <h3>Nos horaires</h3>
-                    <table>
+                <div class="table-responsive">
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th>Jour</th>
@@ -133,11 +134,12 @@
                             ?>
                             </tr>
                     </table>
+                </div>
             </div>
 
             <!-- Signature. -->
             <div class="col-md-4 d-flex align-items-center">
-                <span class="text-muted">© 2022 Florent Maury</span>
+                <span class="text-muted">© 2023 Florent Maury</span>
             </div>
         </footer>
 

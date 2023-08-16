@@ -16,9 +16,10 @@ if(isset($_POST["action"])) {
     }
 
     // Filtrage en fonction du kilométrage.
-    if(isset($_POST["minimum_km"], $_POST["maximum_km"]) && !empty($_POST["minimum_km"]) && !empty($_POST["maximum_km"])) {
+    if(isset($_POST["minimum_km"], $_POST["maximum_km"]) | !empty($_POST["minimum_km"]) && !empty($_POST["maximum_km"])) {
         // Concaténation de la requête générale avec le filtre du kilométrage.
         $query .= " AND car_km BETWEEN ".$_POST["minimum_km"]." AND ".$_POST["maximum_km"]." ";
+        print_r($_POST["maximum_km"]);
     }
 
     // Filtrage en fonction de l'année.

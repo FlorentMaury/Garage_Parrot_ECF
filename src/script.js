@@ -26,7 +26,7 @@ $(document).ready(function () {
                 minimum_year: minimum_year,
                 maximum_year: maximum_year,
                 minimum_km: minimum_km,
-                maximum_km: maximum_km
+                maximum_km: maximum_km,
             },
             success: function (data) {
                 $('.filter_data').html(data);

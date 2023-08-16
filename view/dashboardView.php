@@ -199,44 +199,46 @@
             ?>
 
         <!-- tableau des véhicules. -->
-        <table>
-            <thead>
-                <tr>
-                    <th class="px-2">Marque</th>
-                    <th class="px-2">Modèle</th>
-                    <th class="px-2">Kilomètrage</th>
-                    <th class="px-2">Prix</th>
-                    <th class="px-2">Année</th>
-                    <th class="px-2">Description</th>
-                    <th class="px-2">Supprimer</th>
-                </tr>
-            </thead>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="px-2">Marque</th>
+                        <th class="px-2">Modèle</th>
+                        <th class="px-2">Kilomètrage</th>
+                        <th class="px-2">Prix</th>
+                        <th class="px-2">Année</th>
+                        <th class="px-2">Description</th>
+                        <th class="px-2">Supprimer</th>
+                    </tr>
+                </thead>
 
-        <?php
-        require('./model/modelConnectionDB.php');
-            while($car = $cars->fetch()) {
-        ?>
+            <?php
+            require('./model/modelConnectionDB.php');
+                while($car = $cars->fetch()) {
+            ?>
 
-            <tbody>
-                <tr>
-                    <td class="px-2"><?= $car['car_brand'] ?></td>
-                    <td class="px-2"><?= $car['car_type'] ?></td>
-                    <td class="px-2"><?= $car['car_km'] ?></td>
-                    <td class="px-2"><?= $car['car_price'] ?></td>
-                    <td class="px-2"><?= $car['car_year'] ?></td>
-                    <td class="px-2"><?= $car['car_desc'] ?></td>
-                    <td class="px-2">
-                        <a 
-                            href='./model/modelDeleteCar.php?id=<?=$car["id"]?>' 
-                            type="button" 
-                            class="btn btn-info">
-                            <img class="w-75" src="./public/assets/multiplier.png" alt="Image de suppression">
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
+                <tbody>
+                    <tr>
+                        <td class="px-2"><?= $car['car_brand'] ?></td>
+                        <td class="px-2"><?= $car['car_type'] ?></td>
+                        <td class="px-2"><?= $car['car_km'] ?></td>
+                        <td class="px-2"><?= $car['car_price'] ?></td>
+                        <td class="px-2"><?= $car['car_year'] ?></td>
+                        <td class="px-2"><?= $car['car_desc'] ?></td>
+                        <td class="px-2">
+                            <a 
+                                href='./model/modelDeleteCar.php?id=<?=$car["id"]?>' 
+                                type="button" 
+                                class="btn btn-info">
+                                <img class="w-75" src="./public/assets/multiplier.png" alt="Image de suppression">
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
 
-        </table>
+            </table>
+        </div>
 
         <?php
             }

@@ -14,7 +14,7 @@
 
     <!-- Message de validation ou d'erreur -->
     <?php if(isset($_GET['logout'])) {
-    echo '<p class="mt-5 fw-bold text-success">Vous êtes mainetant déconnecté !</p>';
+    echo '<p class="mt-5 pt-5 fw-bold text-success">Vous êtes mainetant déconnecté !</p>';
     }
     else if(isset($_GET['error']) && !empty($_GET['message'])) {
     echo '<p class="mt-5 fw-bold text-danger">'.htmlspecialchars($_GET['message']).'</p>';
@@ -69,7 +69,7 @@
         <input type="hidden" id="hidden_maximum_price" value="30000" />
         <p id="price_show">0 - 30000</p>
         <div id="price_range"></div>
-    </div>    
+    </div>
 
     <!-- Outil de filtre 'kilométrage'. -->
     <div class="list-group w-25">
