@@ -1,8 +1,8 @@
 # Active les liens symboliques.
-# Options + FollowSymlinks
+Options +FollowSymlinks
 
 # Active le module de réecriture.
-# RewriteEngine option
+RewriteEngine On
 
 # Règles de réecritures.
-# RewriteRule ^([-a-z0-9]+)$ /index.php?page=$1 [L]
+RewriteRule ^([a-z0-9]+)$ /ECF/index.php?page=$1 [L]
