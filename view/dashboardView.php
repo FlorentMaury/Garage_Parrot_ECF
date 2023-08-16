@@ -213,12 +213,13 @@
                     </tr>
                 </thead>
 
-            <?php
-            require('./model/modelConnectionDB.php');
-                while($car = $cars->fetch()) {
-            ?>
-
                 <tbody>
+
+                <?php
+                    require('./model/modelConnectionDB.php');
+                    while($car = $cars->fetch()) {
+                ?>
+
                     <tr>
                         <td class="px-2"><?= $car['car_brand'] ?></td>
                         <td class="px-2"><?= $car['car_type'] ?></td>
@@ -236,13 +237,12 @@
                         </td>
                     </tr>
                 </tbody>
+                <?php
+                    }
+                ?>
 
             </table>
         </div>
-
-        <?php
-            }
-        ?>
 
         <!-- Ajout d'un véhicule. -->
         <h2 class="display-4 text-primary text-center mt-5">Mettre un véhicule en ligne : </h2>
@@ -382,8 +382,8 @@
             </div>
 
             <?php } ?>
+        </div>
     </div>
-</div>
 
     <?php } ?>
 
